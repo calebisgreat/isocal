@@ -1,0 +1,36 @@
+{% extends "base_template.html" %}
+
+{% block standards %}
+<table>
+    <tr>
+        <td>Laboratory Standards and Equipment<br /> and Equipment Used</td>
+        <td>Serial No.</td>
+        <td>Certificate No.</td>
+    </tr>
+    <tr>
+        <td>Fluke 5100B</td>
+        <td>4811139</td>
+        <td>26807</td>
+    </tr>
+</table>
+{% endblock %}
+
+{% block results %}
+<table>
+    <tr>
+        <td>Input</td>
+        <td>Indicated Reading</td>
+        <td>Correction</td>
+        <td>Uncertainty</td>
+        <td>Remarks</td>
+    </tr>
+    {{fields}}
+    </table>
+    
+    {{corrections}}
+{% endblock %}
+
+{% block traceability %}
+<p><b>Traceability</b>: The Fluke calibrator us traceable to REPCAL Services cc, South Africa
+through certificate number 146-03041216</p>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "app.html" %}
+{% block content %}
+<div class="summary">
+	Date: {{date}}
+</div>
+<div class="summary" style="overflow-y: auto; height: 300px;width: 600px;">
+	Outstanding Certificates:
+	<table >
+		<tr>
+			<th class="summary_table">Instrument</th>
+			<th class="summary_table">Serial #</th>
+			<th class="summary_table">Customer</th>
+			<th class="summary_table">Date</th>
+			<th class="summary_table">Create certificate</th>
+		</tr>
+		{% for data in outstanding %}
+		<tr>
+			<td>{{data.name_of_instrument}}</td>
+			<td>{{data.serial}}</td>
+			<td>{{data.customer}}</td>
+			<td>{{data.date}}</td>
+			<td style="background-color: blue;"><a href="generate_certificate?id={{data._id}}&_type={{data._type}}"  >Generate Certificate</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+
+<div class="summary" style="overflow-y: auto; 
+                height: 300px;
+                width: 500px;">
+	Completed Certificates:
+	<table>
+		<tr>
+			<th class="summary_table">Instrument</th>
+			<th class="summary_table">Customer</th>
+			<th class="summary_table">Date</th>
+			<th class="summary_table">Certificate #</th>
+		</tr>
+		{% for certificate in completed %}
+		<tr>
+			<td>{{certificate.name_of_instrument}}</td>
+			<td>{{certificate.customer}}</td>
+			<td>{{certificate.date}}</td>
+			<td>{{certificate.serial}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+
+<script>
+</script>
+{% endblock %}

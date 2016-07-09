@@ -1,0 +1,33 @@
+{% extends "base_template.html" %}
+
+{% block standards %}
+<table>
+    <tr>
+        <td>Laboratory Standards and Equipment<br /> and Equipment Used</td>
+        <td>Serial No.</td>
+        <td>Certificate No.</td>
+    </tr>
+    <tr>
+        {{standard}}
+    </tr>
+</table>
+{% endblock %}
+
+{% block results %}
+<table>
+    <tr>
+        <td>Standard Used</td>
+        <td>Indicated Reading</td>
+        <td>Difference</td>
+    </tr>
+    {{fields}}
+    </table>
+    {{corrections}}
+    <p><b>The uncertainty of the measurements was estimated to be ± 
+	{{uncertainty}}.(95% confidence level)</b>
+	</p>
+{% endblock %}
+
+{% block traceability %}
+{{traceability}}
+{% endblock %}

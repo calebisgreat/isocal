@@ -1,0 +1,41 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset = "UTF-8" >
+		<link rel="stylesheet" href="css/forms.css" />
+		<style>
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="head">
+	<p>ConsolTech Calibration    <span id="greeting">Hello {{user}}</span> </p>
+	</div>
+	<div id="aside">
+	<ul>
+		<li><a href="new">New Certificate</a></li>
+		<li><a href="summary">Certificate Summary</a></li>
+		<li><a href="stats">Certificate Statistics</a></li>
+		<li><a href="data">Calibrate</a></li>
+		<li><a href="admin">Admin</a></li>
+	</ul>
+	</div>
+	<div id="content">
+		<form method="POST" action ="add_customer">
+			<fieldset>
+				<legend>Customer details</legend>
+				<p>Name</p>
+				<input type="text" name="name">
+				<p>Address</p>
+				<input type="text" name="address">
+				<p>Contact Details</p>
+				<input type="text" name="contact">
+				<p>Email</p>
+				<input type="text" name="email">
+			</fieldset>
+				<button> Submit </button>
+			</form>
+	</div>
+		</div>
+	</body>
+</html>

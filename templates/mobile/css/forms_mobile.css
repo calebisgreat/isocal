@@ -1,0 +1,125 @@
+
+#_plus {
+	background: blue;
+	color: white;
+	text-align: center;
+	padding: 2px;
+}
+.base_list{
+	font-size: 24pt;
+	width: 400px;
+	height: 100px;
+	text-align: center;
+	position: relative;
+	
+}
+
+table{
+	border: 1px solid black;
+	border-collapse: collapse;
+	width: 100%;
+	padding: 1px;
+	margin: 5px;
+    max-height: 500px;
+    overflow: auto;
+}
+th{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+
+td {
+	border : 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+	min-width: 1cm;
+	padding: 2px;
+}
+input {
+	width: 80%;
+	height: 1cm;
+	border: 1px solid blue;
+	margin: 5px;
+	padding: 2px;
+}
+
+input:focus {
+	border: 2px solid blue;
+}
+.child{
+	background-color: cyan;
+	
+}
+ul{
+	list-style-type: None;
+}
+
+
+#plus {
+	background-color: blue;
+	width: 50px;
+	height: 20px;
+	
+}
+li{
+	text-decoration: None;
+	display: block;
+	color: white;
+	text-align: center;	
+	padding: 3px;
+	width: 100%;
+    margin: 3px;
+	background-color: blue;
+}
+
+
+.hidden{
+	display: None;
+	position: absolute;
+	top: 105px;
+}
+
+.base_list:hover .hidden{
+	display: block;
+}
+
+
+.but {
+	background-color: blue;
+	color: white;
+	padding: 5px;
+	text-align: center;
+}
+
+
+.sbut {
+	background-color: red;
+	color: white;
+	padding: 5px;
+	text-align: center;
+	display: None;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+    padding: 3px;
+    margin-top: 2px;
+}
+
+select {
+    border: 1px solid blue;
+    padding: 3px;
+    margin: 3px;
+    width: 80%;
+}
+button {
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    min-height: 1cm;
+    background-color: blue;
+    width: 80%;
+    text-align: center;
+    border-style: none; 
+}

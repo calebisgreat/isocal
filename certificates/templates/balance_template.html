@@ -1,0 +1,443 @@
+<!Doctype html>
+<html>
+	<head>
+
+		<style>
+			table, tr, td{
+				border: 1px solid black;
+				border-collapse: collapse;
+				padding: 2px;
+				min-width: 5cm;
+				min-height: 0.5cm;
+				}
+			.no_b{
+				border: none;
+				font-style: italic;
+				padding: 3px;
+			}
+			pre, p{
+				font-size: 12pt;
+			}
+		</style>
+	</head>
+	<body>
+		<center><p>{{certificate_number}}</p></center>
+		<center><img  width="640" height="249" src="iso.png"></center>
+		<center><p>E-mail: Consolte@mweb.co.zw, 17038 Boshoff Road, Graniteside, Harare, Zimbabwe</p></center>
+		<h2 style="color: red;
+					text-align: center;"> CALIBRATION CERTIFICATE</h2>
+
+<pre><b>Date of Calibration:  {{date}}
+		
+Calibrated for     :  {{customer}}
+		
+Calibration of     :  {{type}}
+
+Manufacturer       :  {{manufacturer}}
+
+Serial Number      :  {{serial}}
+
+Range              :  {{range}}
+			
+Resolution         :  {{resolution}}
+			
+Calibrated at      :  {{location}}
+
+
+
+</b></pre>
+		
+		
+		<br />
+		<center><table>
+			<tr><td>Calibrated by</td>
+				<td></td>
+				<td>Sign</td>
+			</tr>
+			<tr><td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr><td>Approved by</td>
+				<td>Lab Manager</td>
+				<td>Sign</td>
+			</tr>
+			<tr><td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table></center>
+		<pre>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		</pre>
+	<h3><b>1    Standards used:</b></h3>
+		<table>
+		<tr class="no_b">
+			<td class="no_b">Laboratory Standards and<br />
+			Equipment Used</td>
+			<td class="no_b">Serial Number</td>
+			<td class="no_b">Certificate Number</td>
+		</tr>
+		<tr class="no_b">
+			<td class="no_b">OHAUS</td>
+			<td class="no_b">OHAUS</td>
+			<td class="no_b">201103170800</td>
+		</tr>
+	<table>
+	<h3>2	Procedure used: P-032 </h3>
+		
+	<h3>3	Calibration Conditions:</h3>
+	
+	<p>Temperature: {{temperature}}</p>
+	<p>Humidity   :  {{humidity}}</p>
+	
+	
+	<h3>4	Units used : {{units}}</h3>
+	
+	<h3>5	Results:</h3>
+	<table>
+		<tr>
+			<td>Settling time found to be</td>
+			<td>{{settling_average}}</td>
+		</tr>
+		<tr>
+			<td>Weight used for corner load test</td>
+			<td>{{corner}}</td>
+		</tr>
+		<tr>
+			<td>Max corner loading error</td>
+			<td>{{corner_error}}</td>
+		</tr>
+		<tr>
+			<td>Cold start drift found to be</td>
+			<td>{{drift}}</td>
+		</tr>
+		<tr>
+			<td>Repeatability at 1/2 load found</td>
+			<td>{{half_repeat}}</td>
+		</tr>
+		<tr>
+			<td>Repeatability at 1/1 load found</td>
+			<td>{{full_repeat}}</td>
+		</tr>
+	</table> 
+	
+	<br />
+	
+	<table>
+		<tr>
+			<td>Nominal Mass</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Actual Mass</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Linearity Up</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Difference</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Calibration Adjustment Effected</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Weight used for correction</td>
+			<td></td>
+		</tr>
+	</table>
+	
+	<table>
+		<tr>
+			<td>Nominal Mass</td>
+			<td>Actual Value</td>
+			<td>Indicated Value</td>
+			<td>Correction</td>
+		</tr>
+			{{nominal_fields}}
+	</table>
+		
+	<p> <b>The uncertainty of the balance was estimated to be {{uncertainty}} (95% confidence level)<b></p>
+	
+	
+	<table>
+		<tr>
+			<td>Customer</td>
+			<td>{{customer}}</td>
+		</tr>
+		<tr>
+			<td>Location</td>
+			<td></td>
+			<td>Certificate Number</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Manufacturer</td>
+			<td></td>
+			<td>Date</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Model</td>
+			<td></td>
+			<td>Calibrated by</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Serial Number</td>
+			<td></td>
+			<td>Valindation</td>
+			<td>YES</td>
+		</tr>
+		<tr>
+			<td>Range</td>
+			<td></td>
+			<td>Clean</td>
+			<td>YES</td>
+		</tr>
+		<tr>
+			<td>Resolution</td>
+			<td>{{resolution}}</td>
+			<td>Level</td>
+			<td>YES</td>
+		</tr>
+		<tr>
+			<td>Units</td>
+			<td>grams</td>
+			<td>Warmed Up</td>
+			<td>YES</td>
+		</tr>
+		<tr>
+			<td>Tare Check</td>
+			<td>YES</td>
+			<td>Exercised</td>
+			<td>YES</td>
+		</tr>
+	</table>
+	<br />
+	<p>1) Standards Used</p>
+	<table>
+		<tr>
+			<td>Description</td>
+			<td>Certificate Number</td>
+			<td>Actual weight</td>
+			<td>Uncertainty</td>
+		</tr>
+		{{standards}}
+	</table>
+	<br />
+	<p>2) Cold Start: </p>
+	<table>
+		<tr>
+			<td>Test Weight (g)</td>
+			<td>{{cold_weight}}</td>
+		</tr>
+		<tr>
+			<td>Test #</td>
+			<td>Result</td>
+			<td>Test #</td>
+			<td>Result</td>
+		</tr>
+		{{cold_start}}
+		<tr>
+			<td>Drift</td>
+			<td>{{cold_start_drift}}</td>
+	</table>
+	<br />
+	<p>3) Settling Time: </p>
+	<table>
+		<tr>
+			<td>Reading</td>
+			<td>1st</td>
+			<td>2nd</td>
+			<td>3rd</td>
+			<td>4th</td>
+			<td>5th</td>
+		</tr>
+		<tr>
+		<td>Settling time</td>
+		{{settling_times}}
+		</tr>
+		<tr>
+			<td>Average Settling time</td>
+			<td>{{settling_average}}</td>
+	</table>
+	
+	<br />
+	<p>4) Linearity(before calibration): </p>
+	<table>
+		<tr>
+			<td>Nominal Mass</td>
+			{{linear_nominal_mass}}
+		</tr>
+		<tr>
+			<td>Actual Mass</td>
+			{{linear_actual_mass}}
+		</tr>
+		<tr>
+			<td>Linearity Up</td>
+			{{linear_linearity_up}}
+		</tr>
+		<tr>
+			<td>Linearity Down</td>
+			{{linear_linearity_down}}
+		</tr>
+		<tr>
+			<td>Linearity Up</td>
+			{{linear_linearity_up_again}}
+		</tr>
+		<tr>
+			<td>Average Reading</td>
+			{{linear_average}}
+		</tr>
+		<tr>
+			<td>Difference</td>
+			{{linear_differnece}}
+		</tr>
+		<tr>
+			<td>Standard Deviation</td>
+			{{linear_deviation}}
+		</tr>
+		<tr>
+			<td>Maximum Difference</td>
+			<td>{{linear_maximum}}</td>
+		</tr>
+	</table>
+	<br />
+	<p>6) Repeatability:</p>
+	<table>
+		<tr>
+			<td></td>
+			<td>1/2 Load</td>
+			<td>1/1 Load</td>
+		</tr>
+		<tr>
+			<td>Nominal Mass</td>
+			{{repeat_nominal}}
+		</tr>
+		<tr>
+			<td>Actual Mass</td>
+			{{repeat_actual}}
+		</tr>
+		<tr>
+			<td>1st Reading</td>
+			{{repeat_first}}
+		</tr>
+		<tr>
+			<td>2nd Reading</td>
+			{{repeat_second}}
+		</tr>
+		<tr>
+			<td>3rd Reading</td>
+			{{repeat_third}}
+		</tr>
+		<tr>
+			<td>4th Reading</td>
+			{{repeat_fourth}}
+		</tr>
+		<tr>
+			<td>5th Reading</td>
+			{{repeat_fifth}}
+		</tr>
+		<tr>
+			<td>Average Reading</td>
+			{{repeat_average}}
+		</tr>
+		<tr>
+			<td>Standard Deviation</td>
+			{{repeat_deviation}}
+		</tr>
+	</table>
+	<br /> 
+	<p> Off Center Error</p>
+	<table>
+		<tr>
+			<td>Test Weight</td>
+			<td>{{off_weight}}</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Position</td>
+			<td>Reading</td>
+			<td>Weight Difference</td>
+		</tr>
+		{{off_readings}}
+	</table>
+	
+	<table>
+		<tr>
+			<td>Minimum reading</td>
+			<td>{{off_minimum}}</td>
+		</tr>
+		<tr>
+			<td>Maximum reading</td>
+			<td>{{off_maximum}}</td>
+		</tr>
+		<tr>
+			<td>Average reading</td>
+			<td>{{off_minimum}}</td>
+		</tr>
+		<tr>
+			<td>Minimum Corner error</td>
+			<td>{{off_minimum_corner_error}}</td>
+		</tr>
+		<tr>
+			<td>Standard Deviation of reading</td>
+			<td>{{off-deviation}}</td>
+		</tr>
+	</table>
+	
+	<p><b>The uncertainty of the measurement was estimated to be + 
+	{{uncertainty}}.(95% confidence level)</b>
+	</p>
+		
+	<h3>6	Traceability:</h3>
+	<p>The standard set of mass pieces is traceable to CSIR National Metrology Laboratory South Africa 
+through calibration certificate number ISOOHA01 MV/M-3640</p>
+	
+    
+    <h3>7	Remarks:</h3>
+	
+	<p>The reported uncertainties of measurement were calculated and expressed 
+	in accordance with the BIPM, ISO, IEC, IUPAP, OIML document entitled: "A guide
+	to the expressopn of Uncertainty in Measurement"(International Organization for
+	Standardization, Geneva Switzerland, 1993)</p>
+	
+	<p>The reported uncertainties of measurement are based on standard uncertainty 
+	multiplied by a coverage factor of k=2, which unless specifically stated otherwise
+	provides a level of confidence of approximately 95%</p>
+    <p>{{comments}}</p>
+	</body>
+</html>

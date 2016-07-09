@@ -1,0 +1,55 @@
+{% extends "home.html" %}
+{% block content %}
+		<form method="POST" action ="captured?type=pieces">
+			<p> Mass piece Calibration using single substitution method</p>
+			
+			<fieldset>
+				<legend>Customer</legend>
+				
+				<select name="customer">
+					<option value="delta">Delta</option>
+					<option value="kwekwemaltings">Kwekwe Maltings</option>
+					<option value="softex">Softex</option>
+				</select>
+				<a href="newcustomer">New Customer</a>
+				
+			</fieldset>
+			<fieldset>
+				<legend>Mass Piece Identification</legend>
+				<p>Serial Number</p>
+				<input type="text" name="_sn">
+				<p>Manufacturer</p>
+				<input type="text" name="_man">
+			</fieldset>
+			<fieldset>
+				<legend>Instrument Specifications</legend>
+				<p>Resolution</p>
+				<input type="text" name="resolution">
+				<p>Units</p>
+				<input type="text" name="units">
+			</fieldset>
+			<fieldset>
+				<legend>Standard</legend>
+				<p>Actual Mass of Standard</p>
+				<input type="text" name="smass">				
+				<p>Uncertainty of Standard</p>
+				<input type="text" name="uncertainty">			
+			<fieldset>
+				<legend>Calibration</legend>
+				<table>
+				<tr>
+					<th>Reading #</th>
+					<th>Indicated Value</th>
+					<th>Actual Value</th>
+				</tr>
+				</table>
+				
+				Standard reading: <input type="text" name="actual" id ="actual"><br />
+				UUT reading: <input type="text" name="indicated" id ="indicated"> <br />
+				<button> + </button>				
+				<p> Comments</p>
+				<input type="textarea" name="comments">
+				</fieldset>
+				<button> Submit </button>
+			</form>
+{% endblock %}

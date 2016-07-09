@@ -1,0 +1,48 @@
+{% extends "app_mobile.html" %}
+{% block content %}
+<form method="POST" action="add_standard">
+    <fieldset>
+        <legend>New Standard</legend>
+        <p>Name:</p>
+        <input type="text" name="name" >
+        
+        <p>Certificate Number</p>
+        <input type="text" name="certificate" >
+        
+        <p>Nominal Value</p>
+        <input type="text" id="nominal" >
+        
+        <p>Actual Value</p>
+        <input type="text" id="actual" >
+        
+        <p>Uncertainty</p>
+        <input type="text" id="uncertainty" >
+        
+        <p id="record" class="but" >Record Data </p>
+        <button id="sbut" >Submit</button>
+    </fieldset>
+</form>
+<script>
+    $(document).ready(function(){
+        $("#record").click(function(){
+            if( $("#nominal").val() == "" || $("#actual").val() == "" || $("#uncertainty").val() == ""){
+                alert("some data is missing");
+            }
+            else{
+                $("#standard_table").load("/tabulate_standard", {"nominal": $("#nominal").val(), "actual": $("#actual").val(),"uncertainty": $("#uncertainty").val()});
+            }
+        })
+    })
+</script>
+{% endblock %}
+{% block right %}
+<div id="standard_table" >
+            <table>
+                <tr>
+                    <td>Nominal</td>
+                    <td>Actual</td>
+                    <td>Uncertainty</td>
+                </tr>
+            </table>
+        </div>
+{% endblock %}

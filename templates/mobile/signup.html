@@ -1,0 +1,34 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/app.css" >
+        <link rel="stylesheet" href="css/forms.css" >
+    </head>
+	<body>
+	<div id="signup">
+		<form action="validate_user" method="POST">
+			<fieldset>
+				<legend>Personal Info</legend>
+				<p>Full Name:</p>
+				<input type="text" name="name">
+				<p>User Name: {{user}}</p>
+				<input type="text" name="user">
+				<p>Type of Profile: {{type}}</p>
+				<select name="profile">
+					<option value="metrologist">Metrologist</option>
+					<option value="admin">Administrator</option>
+				</select>
+			</fieldset>
+			<fieldset>
+				<legend>Password</legend>
+				<p>Enter Password: <span id="pass_strength"></span></p>
+				<input type="password" name = "password" id="pass1">
+				<p>Re-Enter Password: <span id="match"></span></p>
+				<input type="password" id="pass2">
+			</fieldset>
+			<button type="submit">Sign Up</button>
+		</form>	
+	</div>
+	</body>
+</html>

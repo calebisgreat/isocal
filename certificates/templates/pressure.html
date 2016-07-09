@@ -1,0 +1,46 @@
+{% extends "base_template.html" %}
+{% block standards %}
+	<table>
+		<tr>
+			<td>Laboratory Standards and<br />
+			Equipment Used</td>
+			<td>Serial Number</td>
+			<td>Certificate Number</td>
+		</tr>
+		<tr>
+			<td> Dead Weight Tester</td>
+			<td>13233</td>
+			<td>P/233/02</td>
+		</tr>
+	<table>
+	
+	
+{% endblock %}
+{% block results %}
+
+	<table>
+		<tr>
+			<td>Total weight(g)</td>
+			<td>Calculated pressure</td>
+			<td>Actual Reading</td>
+			<td>Difference</td>
+		</tr>
+		{{fields}}
+	</table>
+    
+    {{corrections}}
+	<p><b>The uncertainty of the pressure measurement was estimated to be ± 
+	{{uncertainty}} {{units}}.(95% confidence level)</b>
+	</p>
+	
+	
+{% endblock %}
+	
+	<h3>6	Traceability:</h3>
+	{% block traceability %}
+		<p>The standard pressure calibrator is traceable to Superb Instrumentation 
+		through calibration certificate numbers P/807/02 AND 0795105</p>
+		
+	{% endblock %}
+	
+	

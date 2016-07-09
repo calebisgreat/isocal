@@ -1,0 +1,60 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset = "UTF-8" >
+		<link rel="stylesheet" href="css/app.css" >
+		<link rel="stylesheet" href="css/forms.css" >
+		<script  src="scripts/jquery-2.2.2.js"></script>
+	</head>
+	<body>
+		<div id="head">
+		<h1>ConsolTech Calibration </h1>
+		</div>
+		<div id="aside">
+			<ul>
+				<li class="base" id="calibrate" >Calibrate</li>
+                    <ul id="sub">
+                        <li id="general">General Calibration</li>
+                            <ul class="hidden" id="general_calibrations">
+                                <li><a href="general?_type=pressure">Pressure</a></li>
+                                <li><a href="general?_type=temperature">Temperature</a></li>
+                                <li><a href="general?_type=flow">Flow</a></li>
+                                <li><a href="general?_type=ph">pH</a></li>
+                                <li><a href="general?_type=tds">TDS</a></li>
+                                <li><a href="general?_type=length">Length</a></li>
+                                <li><a href="general?_type=mass">Mass Pieces</a></li>
+                           </ul>
+                        <li><a href="balances">Balance Calibration</a></li>
+                    </ul>
+				<li class="base"><a href="summary">Certificate Summary</a></li>
+                <li class="base" id="admin"> Admin</li>
+                    <ul class="hidden" id="features">
+                        <li><a href="newcustomer" >Add Customer</a></li>
+                        <li><a href="newstandard">Add standard</a></li>
+                        <li><a>Add Unit</a></li>
+                    </ul>
+			</ul>
+		</div>
+        <script>
+        $(document).ready(function(){
+            $("#calibrate").click(function(){
+                $("#sub").toggle(); 
+                    })
+                    
+            $("#general").click(function(){
+                $("#general_calibrations").toggle();
+                        })
+                        
+            $("#admin").click(function(){
+                $("#features").toggle();
+                        })
+            })
+        </script>
+	<div id="content">
+		{% block content %} {% endblock %}
+	</div>
+    <div id="right">
+        {% block right %} {% endblock %}
+    </div>
+	</body>
+</html>

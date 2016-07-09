@@ -1,0 +1,95 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+			table, tr, td{
+				border: 1px solid black;
+				border-collapse: collapse;
+				padding: 2px;
+				min-width: 5cm;
+				min-height: 0.5cm;
+				}
+		</style>
+    </head>
+    <body>
+        <p><b>F013 GENERAL CALIBRATION DATASHEET (ISOCAL LABORATORIES)<b/></p>
+        <table>
+            <tr>
+                <td>Customer:</td>
+                <td>{{customer}}</td>
+                <td>Certificate Number:</td>
+                <td>{{number}}</td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td>{{address}}</td>
+                <td>Date:</td>
+                <td>{{date}}</td>
+            </tr>
+            <tr>
+                <td>Manufacturer:</td>
+                <td>{{manufacturer}}</td>
+                <td>Calibrated By:</td>
+                <td>{{user}}</td>
+            </tr>
+            <tr>
+                <td>Name of Instrument:</td>
+                <td>{{name}}</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Model:</td>
+                <td>{{model}}</td>
+                <td>Standards Used:</td>
+                <td>{{standards}}</td>
+            </tr>
+            <tr>
+                <td>Serial Number:</td>
+                <td>{{serial}}</td>
+                <td>Traceability:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Range:</td>
+                <td>{{range}}</td>
+                <td>Immersion Depth:</td>
+                <td>{{immersion}}</td>
+            </tr>
+            <tr>
+                <td>Resolution:</td>
+                <td>{{resolution}}</td>
+                <td>:Ambient Temperature</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Unit:</td>
+                <td>{{unit}}</td>
+                <td>Humidity</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Calibrated at</td>
+                <td>{{location}}</td>
+            </tr>
+            <tr>
+                <td>Start Time</td>
+                <td>{{start_time}}</td>
+                <td>End Time</td>
+                <td>{{end_time}}</td>
+            </tr>
+        </table>
+        <p><b>Results</b></p>
+        <table>
+            <tr>
+                    <td>Actual Reading</td>
+                    <td>Indicated Reading</td>
+                    <td>Actual Reading</td>
+                    <td>Indicated Reading</td>
+                </tr>
+                {{readings}}
+            </table>
+        <p><b>Comments: </b>{{comments}}</p>
+    </body>
+</html>

@@ -1,0 +1,122 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+			table, tr, td{
+				border: 1px solid black;
+				border-collapse: collapse;
+				padding: 2px;
+				min-width: 5cm;
+				min-height: 0.5cm;
+				}
+		</style>
+    </head>
+    <body>
+        <p><b>FM-029 MASS CALIBRATION DATASHEET (ISOCAL LABORATORIES)</b></p>
+        <table>
+            <tr>
+                <td>Date of Calibration</td>
+                <td>{{date}}</td>
+            </tr>
+            <tr>
+                <td>Calibrated For</td>
+                <td>{{customer}}</td>
+            </tr>
+            <tr>
+                <td>Calibration of</td>
+                <td>{{name_of_instrument}}</td>
+            </tr>
+            <tr>
+                <td>Manufacturer</td>
+                <td>{{manufacturer}}</td>
+            </tr>
+            <tr>
+                <td>Model</td>
+                <td>{{model}}</td>
+            </tr>
+            <tr>
+                <td>Serial Number</td>
+                <td>{{serial}}</td>
+            </tr>
+            <tr>
+                <td>Range</td>
+                <td>{{range}}</td>
+            </tr>
+            <tr>
+                <td>Resolution</td>
+                <td>{{resolution}}</td>
+            </tr>
+            <tr>
+                <td>Units Used</td>
+                <td>{{units}}</td>
+            </tr>
+            <tr>
+                <td>Calibrated at</td>
+                <td>{{location}}</td>
+            </tr>
+            <tr>
+                <td>Calibrated by</td>
+                <td>{{user}}</td>
+            </tr>
+            <tr>
+                <td>Certificate Number</td>
+                <td>{{number}}</td>
+            </tr>
+            <tr>
+                <td>Procedure Used</td>
+                <td>{{procedure}}</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>1) Calibration Conditions</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Temperature</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Humidity</td>
+                <td></td>
+            </tr>
+        </table>
+        <p><b>2) Cold Start</b><p/>
+        <table>
+            <tr><td>Nominal Mass</td>{{nominal_values}}
+            </tr>
+        </table>
+        <p><b>3)Settling Time</b><p/>
+        <table>
+            <tr><td>Reading</td><td>1st</td><td>2nd</td><td>3rd</td><td>4th</td><td>5th</td></tr>
+            <tr><td>Settling Time</td>{{settling_values}}</tr>
+        </table>
+        <p><b>4)Linearity:</b> (before calibration adjustments)<p/>
+        <table>
+            <tr><td>Nominal Mass</td>{{lin_nominal_values}}</tr>
+            <tr><td>Actual Mass</td>{{lin_actual}}</tr>
+            <tr><td>Linearity Up</td>{{lin_linearity_up}}</tr>
+        </table>
+        <p><b>5) Linearity(measured in the center of the pan)</b><p/>
+        <table>
+            <tr><td>Linearity up</td>{{_2_lin_up}}</tr>
+            <tr><td>Linearity down</td>{{_2_lin_down}}</tr>
+            <tr><td>Linearity up</td>{{_2_lin_up_2}}</tr>
+        </table>
+        <p><b>6) Taring Linearity</b><p/>
+        <table>
+            <tr><td>Tare Value</td>{{tare_values}}</tr>
+            <tr><td>Indicated reading</td>{{tare_indicated}}</tr>
+        </table>
+        <p><b>7) Repeatability</b><p/>
+        <table>
+            <tr><td>Repeatability @1/2</td>{{half_values}}</tr>
+            <tr><td>Repeatability @Full</td>{{full_values}}</tr>
+        </table>
+        <p><b>8) Off Center erro:</b><p/>
+        <table>
+            {{off_center}}
+        </table>
+    </body>
+</html>

@@ -1,0 +1,74 @@
+{% extends "app.html" %}
+{% block content %}
+<form method="POST" action="add_standard">
+    <fieldset>
+        <legend>New Standard</legend>
+        <p>Name:</p>
+        <input type="text" name="name" >
+        
+        <p>Type:</p>
+        <select name="_type">
+            <option value="pressure">Pressure</option>
+            <option value="mass">Mass</option>
+            <option value="temperature">Temperature</option>
+            <option value="volume">Volume</option>
+            <option value="tds">TDS</option>
+            <option value="ph">pH</option>
+            <option value="flow">Flow</option>
+            <option value="balances">Balances</option>
+        </select> 
+        <p>Certificate Number</p>
+        <input type="text" name="certificate" >
+        
+        <p>Nominal Value</p>
+        <input type="text" id="nominal" >
+        
+        <p>Actual Value</p>
+        <input type="text" id="actual" >
+        
+        <p>Uncertainty</p>
+        <input type="text" id="uncertainty" >
+        
+        <p id="record" class="but" >Record Data </p>
+        <button id="sbut" >Submit</button>
+    </fieldset>
+</form>
+<script>
+    function nominalCheck(id, std){
+        alert(std);
+        $.post("check_nominal", {"value": $(id).val(), 
+                                   "standard": std}, 
+                                   function(data, status){
+                                   if(data == "true"){
+                                            alert("valid input");
+                                            }
+                                  else{
+                                      alert("Warning! The value entered is not registered with the selected standard. Certificate generation will fail");
+                                      }
+                                      }
+                                     )
+                                }
+
+    $(document).ready(function(){
+        $("#record").click(function(){
+            if( $("#nominal").val() == "" || $("#actual").val() == "" || $("#uncertainty").val() == ""){
+                alert("some data is missing");
+            }
+            else{
+                $("#standard_table").load("/tabulate_standard", {"nominal": $("#nominal").val(), "actual": $("#actual").val(),"uncertainty": $("#uncertainty").val()});
+            }
+        })
+    })
+</script>
+{% endblock %}
+{% block right %}
+<div id="standard_table" >
+            <table>
+                <tr>
+                    <td>Nominal</td>
+                    <td>Actual</td>
+                    <td>Uncertainty</td>
+                </tr>
+            </table>
+        </div>
+{% endblock %}

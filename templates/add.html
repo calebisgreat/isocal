@@ -1,0 +1,18 @@
+{% extends "app.html"%}
+
+{% block content%}
+<form method="POST" action="create_certificate">
+    <fieldset>
+        <legend>Instrument Details</legend>
+        <p>Temperature:</p>
+        <input type="text" name= "temp">
+        <p>Humidity:</p>
+        <input type="text" name= "humidity">
+        <p>Id, (don't change):</p>
+        <input type="text" name= "id" value="{{id}}">
+        <p>Type of calibration(don't change):</p>
+        <input type="text" name= "_type" value="{{_type}}">
+    <button>Submit</button>
+    </fieldset>
+</form>
+{% endblock %}

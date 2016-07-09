@@ -1,0 +1,74 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset = "UTF-8" >
+		<link rel="stylesheet" href="css/app.css" >
+		<link rel="stylesheet" href="css/forms.css" >
+	</head>
+	<body>
+		<div id="head">
+		<p>ConsolTech Calibration   <span id="greeting">Hello {{user}}</span> </p>
+		</div>
+		<div id="aside">
+			<ul>
+				<li><a href="new">New Certificate</a></li>
+				<li><a href="summary">Certificate Summary</a></li>
+				<li><a href="admin">Admin</a></li>
+			</ul>
+		</div>
+	<div id="content">
+				<h1>{{ Heading}}</h1>
+		<form method="POST" action ="captured?_type={{Heading}}">
+			<fieldset>
+				<legend>Customer</legend>
+				
+				<select name="_customer">
+					<option value="delta">Delta</option>
+					<option value="kwekwemaltings">Kwekwe Maltings</option>
+					<option value="softex">Softex</option>
+				</select>
+				<a href="newcustomer">New Customer</a>
+				
+			</fieldset>
+			<fieldset>
+				<legend>Instrument Identification</legend>
+				<p>Name of Instrument</p>
+				<input type="text" name="_instrument">
+				<p>Serial Number</p>
+				<input type="text" name="_sn">
+				<p>Manufacturer</p>
+				<input type="text" name="_man">
+				<p>Model</p>
+				<input type="text" name="_model">			
+			</fieldset>
+			<fieldset>
+				<legend>Instrument Specifications</legend>
+				<p>Range</p>
+				<input type="text" name="_range">
+				<p>Resolution</p>
+				<input type="text" name="_resolution">
+				<p>Units</p>
+				<input type="text" name="_units">
+				<p>Calibrated at</p>
+				<input type="text" name="_location">
+				</fieldset>
+			<fieldset>
+				<legend>Calibration</legend>
+				<table>
+				<tr>
+					<th>Indicated Value</th>
+					<th>Actual Value</th>
+				</tr>
+				</table>
+				
+				Actual value: <input type="text" name="_actual" id ="actual"><br />
+				Indicated value: <input type="text" name="_indicated" id ="indicated"> <br />
+				<button> + </button>				
+				<p> Comments</p>
+				<input type="textarea" name="_comments">
+				</fieldset>
+				<button> Submit </button>
+			</form>
+	</div>
+	</body>
+</html>

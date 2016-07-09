@@ -1,0 +1,182 @@
+{% extends "app.html" %}
+{% block content %}
+		<h2>{{Heading}}</h2>
+        
+        
+        <div id="generic_data">
+            <p>Date: {{date}}</p>
+            <p>User: {{user}}</p>
+            <p>Start Time: <span></span></p>
+            <p>Certificate Number: {{certificate_number}}</p>
+        </div>
+
+
+		<form method="POST" action ="captured?_type={{Heading}}" onsubmit="return(validate())">
+			<fieldset>
+				<legend>Customer</legend>
+				
+				<select name="_customer">
+				{% for customer in customers %}
+					<option value="{{customer.name}}">{{customer.name}}</option>
+				{% endfor %}
+				</select>
+
+				<a href="newcustomer" style="background-color: blue;
+                                            padding: 3px;
+                                            margin: 2px;">New Customer</a>
+				
+			</fieldset>
+            
+			<fieldset id="data">
+				<legend>Instrument Identification</legend>
+				<p>Date of calibration</p>
+				<input type="date" name="_date">
+                <p>Name of Instrument</p>
+				<input type="text" name="_instrument">
+				<p>Serial Number</p>
+				<input type="text" name="_sn">
+				<p>Manufacturer</p>
+				<input type="text" name="_man">
+				<p>Model</p>
+				<input type="text" name="_model">			
+			</fieldset>
+			<fieldset id = "specs">
+				<legend>Instrument Specifications</legend>
+				<p id="spec_error"></p>
+				<p>Range</p>
+				<input type="text" name="_range">
+				<p>Resolution</p>
+				<input type="text" name="_resolution">
+				<p>Units</p>
+				<select name="_units">
+					{{unit}}
+				</select>
+				<p>Standard Used</p>
+				<select name="_standard">
+					{{standard}}
+				</select>
+                
+                <a href="newstandard" style="background-color: blue;
+                                        padding: 3px;
+                                        margin: 2px;">New Standard</a>
+				<p>Calibrated at</p>
+				<input type="text" name="_location">
+				
+                <p>Immersion Depth: </p>
+				<input type="text" name="_immersion">
+                
+                <p id="reveal" class="but">Calibrate</p>
+                </fieldset>
+                
+			<fieldset id="_calibrate" style="display: none;">
+				<legend>Calibration</legend>
+				<div id="tab">
+				</div>
+				
+				<hr />
+				Actual value:                       
+				<input type="text" name = "_actual" id ="actual"> <br />
+				Indicated value:
+				<input type="text" name = "_indicated" id ="indicated"> <br />
+				<p class="but" id="_plus" >Record Data </p>				
+				
+                <p> Comments</p>
+				<input type="textarea" name="_comments">
+			</fieldset>
+				
+				<button> Submit </button>
+			</form>
+			<script>
+                function validate(){
+                    
+                    if($("input[name=_location]").val() == "" ||
+                        $("input[name=_resolution]").val() == "" ||
+                        $("input[name=_range]").val() == "" ||
+                        $("input[name=_model]").val() == "" ||
+                        $("input[name=_man]").val() == "" ||
+                        $("input[name=_sn]").val() == "" ||
+                        $("input[name=_instrument]").val() == "" ||
+                        $("input[name=_customer]").val() == ""){
+                            alert("You cannot submit an empty field");
+                            return false;
+                        }
+                        else{
+                            return (true);
+                        }
+                }
+                
+				$(document).ready(function(){
+                
+                    $("#reveal").click(function(){
+                        $("#_calibrate").show();
+                        $("#data").hide();
+                        $("#specs").hide();
+                    })
+                    
+                    $("#_plus").click(function(){
+                    if($("#actual").val() == "" || $("#indicated").val() == "" ){
+                        alert("You cant record empty fields");
+                    }
+                    else{
+                    {% if Heading == "Pressure" %}
+						$("#tab").load("/tabulate_general_pressure",{"actual": $("#actual").val(), "unit": $("select[name=_units]").val(), "indicated": $("#indicated").val()});
+                        
+                    {% else %}
+                        $("#tab").load("/tabulate_general",{"actual": $("#actual").val(), "indicated": $("#indicated").val()});
+                        
+                    {% endif %}
+                        }
+                    })
+                    
+				})
+			</script>
+{% endblock %}
+{% block right %}
+{% if instructions %}
+                                <p>The actual value field must be entered with the 
+                                weight of the mass in grams, for the empty tray
+                                merely write 'empty'. For reference use the table below</p>
+                                <table>
+                                    <tr>
+                                        <th>Mass Piece</th>
+                                        <th>Actual Weight in grams</th>
+                                        <th>Actual pressure in Bar</th>
+                                    </tr>
+                                    <tr>
+                                        <td>brass 100</td>
+                                        <td>99.9803</td>
+                                        <td>0.4983</td>
+                                    </tr>
+                                    <tr>
+                                        <td>brass 200</td>
+                                        <td>200.0109</td>
+                                        <td>0.6509</td>
+                                    </tr>
+                                    <tr>
+                                        <td>brass 500</td>
+                                        <td>500.0075</td>
+                                        <td>1.1086</td>
+                                    </tr>
+                                    <tr>
+                                        <td>brass 1000</td>
+                                        <td>1000.0185</td>
+                                        <td>1.8764</td>
+                                    </tr>
+                                    <tr>
+                                        <td>blue 10</td>
+                                        <td>4656</td>
+                                        <td>7.4495</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bob Courtney 20</td>
+                                        <td>8913</td>
+                                        <td>13.9445</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fulton&evans 5</td>
+                                        <td>2398</td>
+                                        <td>4.0044</td>
+                                    </tr>                                    
+                                </table>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends "base_template.html" %}
+{% block standards %}
+	<table>
+		<tr class="no_b">
+			<td class="no_b">Laboratory Standards and<br />
+			Equipment Used</td>
+			<td class="no_b">Serial Number</td>
+			<td class="no_b">Certificate Number</td>
+		</tr>
+		<tr class="no_b">
+			<td class="no_b">OHAUS</td>
+			<td class="no_b">OHAUS</td>
+			<td class="no_b">201103170800</td>
+		</tr>
+	<table>
+	
+{% endblock %}
+{% block results %}
+	<table>
+		<tr>
+			<td>Settling time found to be</td>
+			<td>{{settling_average}}</td>
+		</tr>
+		<tr>
+			<td>Weight used for corner load test</td>
+			<td>{{corner}}</td>
+		</tr>
+		<tr>
+			<td>Max corner loading error</td>
+			<td>{{corner_error}}</td>
+		</tr>
+		<tr>
+			<td>Cold start drift found to be</td>
+			<td>{{drift}}</td>
+		</tr>
+		<tr>
+			<td>Repeatability at 1/2 load found</td>
+			<td>{{half_repeat}}</td>
+		</tr>
+		<tr>
+			<td>Repeatability at 1/1 load found</td>
+			<td>{{full_repeat}}</td>
+		</tr>
+	</table> 
+	
+	<br />
+	
+	{{nominal_table}}
+	
+	
+	<p><b>The uncertainty of the balance was estimated to be {{uncertainty}} (95% confidence level)</b></p>
+	
+	
+	<table>
+		<tr>
+			<td>Customer</td>
+			<td>{{customer}}</td>
+		</tr>
+		<tr>
+			<td>Location</td>
+			<td>{{location}}</td>
+			<td>Certificate Number</td>
+			<td>{{certificate_number}}</td>
+		</tr>
+		<tr>
+			<td>Manufacturer</td>
+			<td>{{manufacturer}}</td>
+			<td>Date</td>
+			<td>{{date}}</td>
+		</tr>
+		<tr>
+			<td>Model</td>
+			<td>{{model}}</td>
+			<td>Calibrated by</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Serial Number</td>
+			<td>{{serial}}</td>
+			<td>Valindation</td>
+			<td>YES</td>
+		</tr>
+		<tr>
+			<td>Range</td>
+			<td>{{range}}</td>
+			<td>Clean</td>
+			<td>YES</td>
+		</tr>
+		<tr>
+			<td>Resolution</td>
+			<td>{{resolution}}</td>
+			<td>Level</td>
+			<td>YES</td>
+		</tr>
+		<tr>
+			<td>Units</td>
+			<td>grams</td>
+			<td>Warmed Up</td>
+			<td>YES</td>
+		</tr>
+		<tr>
+			<td>Tare Check</td>
+			<td>YES</td>
+			<td>Exercised</td>
+			<td>YES</td>
+		</tr>
+	</table>
+	<br />
+	<p>1) Standards Used</p>
+	
+	{{standards_table}}
+	
+	<br />
+	<p>2) Cold Start: </p>
+	
+	{{cold_start_table}}
+	
+	<br />
+	<p>3) Settling Time: </p>
+	
+	{{settling_table}}
+	
+	<br />
+	<p>4) Linearity(before calibration): </p>
+	
+	{{nominal_table}}
+	
+	<br />
+	<p>5) Linearity(after calibration adjustments):</p>
+	
+	{{linearity_table}}
+	
+	<br />
+	<p>6) Repeatability:</p>
+	
+	{{repeatability_table}}
+	
+	<br /> 
+	<p>7) Off Center Error</p>
+	
+	{{off_table}}
+	
+	<p><b>The uncertainty of the measurement was estimated to be + 
+	{{uncertainty}}.(95% confidence level)</b>
+	</p>
+	
+{% endblock %}
+
+{% block traceability %}
+<p>The standard set of mass pieces is traceable to CSIR National Metrology Laboratory South Africa 
+through calibration certificate number ISOOHA01 MV/M-3640</p>
+{% endblock %}

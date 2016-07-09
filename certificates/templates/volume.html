@@ -1,0 +1,43 @@
+{% extends "base_template.html" %}
+
+{% block standards %}
+<table>
+    <tr>
+        <td>Laboratory Standards 
+        \n and Equipment used</td>
+        <td>Serial No.</td>
+        <td>Certificate No.</td>
+    </tr>
+    <tr>
+        <td>Analytical Balance</td>
+        <td>14204945</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Standard Set of Mass pieces</td>
+        <td>Ohaus</td>
+        <td>201103170800</td>
+    </tr>
+</table>
+{% endblock %}
+
+{% block results %}
+<table>
+    <tr>
+        <td>Actual Reading</td>
+        <td>Indicated Reading</td>
+        <td>Difference</td>
+    </tr>
+{{fields}}
+</table>
+
+{{corrections}}
+<p><b>The uncertainty of the measurements was estimated to be ± 
+	{{uncertainty}}.(95% confidence level)</b>
+	</p>
+{% endblock %}
+
+{% block traceability %}
+<p>The standard set of mass pieces used to standardize the analytical balance is traceable to
+WELFIELD METROLOGY South Africa through calibration certificate M10-35</p>
+{% endblock %}

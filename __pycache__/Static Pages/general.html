@@ -1,0 +1,55 @@
+{% extends "home.html" %}
+{% block content %}
+		<p>{{ Heading}}
+		<form method="POST" action ="calibrate">
+			<fieldset>
+				<legend>Customer</legend>
+				
+				<select name="customer">
+					<option value="delta">Delta</option>
+					<option value="kwekwemaltings">Kwekwe Maltings</option>
+					<option value="softex">Softex</option>
+				</select>
+				<a href="newcustomer">New Customer</a>
+				
+			</fieldset>
+			<fieldset>
+				<legend>Instrument Identification</legend>
+				<p>Name of Instrument</p>
+				<input type="text" name="_instrument">
+				<p>Serial Number</p>
+				<input type="text" name="_sn">
+				<p>Manufacturer</p>
+				<input type="text" name="_man">
+				<p>Model</p>
+				<input type="text" name="_model">			
+			</fieldset>
+			<fieldset>
+				<legend>Instrument Specifications</legend>
+				<p>Range</p>
+				<input type="text" name="_range">
+				<p>Resolution</p>
+				<input type="text" name="_resolution">
+				<p>Units</p>
+				<input type="text" name="_units">
+				<p>Calibrated at</p>
+				<input type="text" name="_location">
+				</fieldset>
+			<fieldset>
+				<legend>Calibration</legend>
+				<table>
+				<tr>
+					<th>Indicated Value</th>
+					<th>Actual Value</th>
+				</tr>
+				</table>
+				
+				Actual value: <input type="text" name="actual" id ="actual"><br />
+				Indicated value: <input type="text" name="indicated" id ="indicated"> <br />
+				<button> + </button>				
+				<p> Comments</p>
+				<input type="textarea" name="comments">
+				</fieldset>
+				<button> Submit </button>
+			</form>
+{% endblock %}

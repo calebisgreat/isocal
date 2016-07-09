@@ -1,0 +1,133 @@
+//application structure
+#content{
+	width: 500px;
+}
+
+
+#head{
+	clear: both;
+	background-color: blue; 
+	color: white;
+	height: 50px;
+	padding: 2px;
+	text-align: center;
+}
+
+h1 {
+    font-style: sans-serif;
+}
+
+#aside{
+	margin: 5px;
+	width: 300px;
+	height: 500px;
+	float:left;
+}
+
+#content{
+	margin: 5px;
+	width: 320px;
+	border: 1px solid white;
+	float: left;
+
+	}
+    
+#generic_data {
+    color: white;
+    background-color: #0088ff;
+    padding: 10px;
+    width: 100%;
+    margin:5px;
+    box-shadow: 3px;
+}
+
+#right{
+	margin: 5px;
+	width: 320px;
+	float:left;
+}
+
+
+//stuff 
+#_plus {
+	background: blue;
+	color: white;
+	text-align: center;
+	padding: 2px;
+}
+
+table{
+	border: 1px solid black;
+	border-collapse: collapse;
+	width: 100%;
+	padding: 1px;
+	margin: 5px;
+    max-height: 500px;
+    overflow: auto;
+}
+th{
+	border : 1px solid black;
+	border-collapse: collapse;
+    min-width: 3cm;
+	padding: 2px;
+}
+
+td {
+	border : 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+	min-width: 3cm;
+	padding: 2px;
+}
+
+input {
+	width: 80%;
+	height:0.7cm;
+	border: 1px solid blue;
+	margin: 5px;
+	padding: 2px;
+}
+
+input:focus {
+	border: 2px solid blue;
+}
+
+
+#plus {
+	background-color: blue;
+	width: 50px;
+	height: 20px;
+	
+}
+
+.but {
+	background-color: blue;
+	color: white;
+	padding: 10px;
+	text-align: center;
+}
+
+
+.sbut {
+	background-color: red;
+	color: white;
+	padding: 5px;
+	text-align: center;
+	display: None;
+}
+
+select {
+    border: 1px solid blue;
+    padding: 3px;
+    margin: 3px;
+    min-width: 3cm;
+}
+button {
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    background-color: blue;
+    min-width: 2cm;
+    text-align: center;
+    border-style: none; 
+}

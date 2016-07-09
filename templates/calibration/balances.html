@@ -1,0 +1,524 @@
+{% extends "app.html" %} {% block content %}
+
+<div id="generic_data">
+            <p>Date: {{date}}</p>
+            <p>User: {{user}}</p>
+            <p>Start Time: <span></span></p>
+            <p>Certificate Number: {{certificate_number}}</p>
+        </div>
+        
+<form method="POST" action="captured_balance" style="float: left;">
+	<fieldset>
+		<legend>Customer</legend>
+
+		<select name="_customer">
+			{% for customer in customers %}
+				<option value="{{customer.name}}">{{customer.name}}</option>
+			{% endfor %}
+		</select>
+
+		<a href="newcustomer" style="background-color: blue;
+                                        padding: 3px;
+                                        margin: 2px;">New Customer</a>
+
+	</fieldset>
+	<fieldset>
+		<legend>Instrument Identification</legend>
+		<p>Name of Instrument</p>
+		<input type="text" name="_instrument">
+		<p>Serial Number</p>
+		<input type="text" name="_sn">
+		<p>Manufacturer</p>
+		<input type="text" name="_man">
+		<p>Model</p>
+		<input type="text" name="_model">
+	</fieldset>
+	<fieldset>
+		<legend>Instrument Specifications</legend>
+		<p>Range</p>
+		<input type="text" name="_range">
+		<p>Resolution</p>
+		<input type="text" name="_resolution">
+		<p>Units</p>
+		<input type="text" name="_units">
+		<p>Calibrated at</p>
+		<input type="text" name="_location">
+	</fieldset>
+	<fieldset>
+		<legend>Calibration</legend>
+		<p> Procedure </p>
+		<select name="_procedure">
+					<option value="procedure">Procedure</option>
+					<option value="procedure">Procedure 2</option>
+				</select>
+
+		<p> Mass pieces:</p>
+
+			<select id="mass_pieces" name="mass_pieces_set">
+    
+            {% for standard in standards %}
+				<option value="{{standard.name}}"> {{standard.name}} </option>
+            {% endfor %}
+    
+            </select>
+                    
+		<a href="newstandard" style="background-color: blue;
+                                        padding: 3px;
+                                        margin: 2px;">New Standard</a>
+					
+		<p> Balance warm up</p>
+		<p>Warm Up Mass Piece nominal value:</p>
+		<input type="text" name="warm_up_nominal">
+		<div id="first" style="
+									display: block;">
+
+			<div id="warm_up_table">
+
+				<table>
+					<tr>
+						<th>Reading #</th>
+						<th>Reading</th>
+					</tr>
+				</table>
+			</div>
+
+			Warm Up reading: <input class="num" type="text" id="__warm_up">
+			<p class="but" id="warm_up"> Record Data </p>
+			<p class="sbut" id="warm_up_s" style="
+									display: none;"> Submit Data </p>
+		</div>
+
+				<p> Settling Time</p>
+		<div id="third" style="
+									display: none;">
+
+			<div id="settling_table">
+				<table>
+					<tr>
+						<th>Reading #</th>
+						<th>Settling time</th>
+					</tr>
+				</table>
+			</div>
+
+			Settling time: <input class="num" type="text" id="__settling">
+
+			<p class="but" id="settling"> Record Data </p>
+
+			<p class="sbut" id="settling_s" style="
+									display: none;"> Submit Data </p>
+		</div>
+
+		<hr />
+		<p> Linearity (before adjustments)</p>
+		<div id="fourth" style="
+									display: none;">
+
+
+			
+
+			<div id="linearity_table">
+				<table>
+					<tr>
+						<th>Nominal Mass</th>
+						<th>Linearity Up</th>
+					</tr>
+				</table>
+			</div>
+
+			Nominal Mass: <input class="num" type="text" id="__lin_nominal"><br /> 
+			Linearity Up: <input class="num" type="text" id="__lin_up"><br />
+
+			<p class="but" id="linearity"> Record Data </p>
+
+			<p class="sbut" id="linearity_s" style="
+									display: none;"> Submit Data </p>
+		</div>
+
+		<hr />
+		<p> Calibration adjustments effected Linearity (from the center of the pan)</p>
+		<div id="fifth" style="
+									display: none;">
+
+			<div id="linearity_table_2">
+				<table>
+					<tr>
+						<td>Nominal Values</td>
+					</tr>
+					<tr>
+						<td>Linearity Up</td>
+					</tr>
+					<tr>
+						<td>Linearity Down</td>
+					</tr>
+					<tr>
+						<td>Linearity Up</td>
+					</tr>
+				</table>
+			</div>
+
+			<p id="which">Nominal Values<p>
+
+					<p>Reading #<span id="linearity_reading">1</span></p>
+					<input class="num" type="text" id="_linearity2_reading"><br /> 
+					
+					<p class="but" id="linearity2"> Record Data </p>
+
+					<p class="sbut" id="linearity2_s" style="
+									display: none;"> Submit Data </p>
+		</div>
+
+		<hr />
+		<p>Taring Linearity </p>
+		<div id="sixth" style="
+									display: none;">
+
+			<div id="taring_table">
+				<table>
+					<tr>
+						<th>Tare Value</th>
+						<th>Indicated Reading</th>
+					</tr>
+				</table>
+			</div>
+
+			<p>Tare Value:</p> 
+			<input class="num" type="text" id="actual_tare"><br /> 
+			<p>Indicated Reading:</p> 
+			<input class="num" type="text" id="indicated_tare"> <br />
+
+			<p class="but" id="taring"> Record Data </p>
+
+			<p class="sbut" id="taring_s" style="
+									display: none;"> Submit Data </p>
+
+		</div>
+		<hr />
+		<p>Repeatability</p>
+		
+		<div id="seventh" style="
+									display: none;">
+		<p id="repeat_mode">1/2 Load readings</p>
+			<div id="repeatability_table">
+				<table>
+					<tr>
+						<td>1/2 Range</td>
+					</tr>
+					<tr>
+						<td>Full Range</td>
+					</tr>
+				</table>
+			</div>
+
+			<p>Reading #<span id="repeat">1</span></p> 
+			<input class="num" type="text" id="_repeat_reading"><br /> 
+			
+
+			<p class="but" id="repeatability"> Record Data </p>
+
+			<p class="sbut" id="repeatability_s"> Submit Data </p>
+		</div>
+
+		<hr />
+		<p>Off Center Test</p>
+        
+		<p>Weight used for load test:</p>
+		<input class="num" type="text" name="off_center_mass" >
+        
+		<div id="eigth" style="
+									display: none;">
+			
+			<img src="pan.png" width="320" height="240"> 
+			<div id="off_table">
+			
+			
+			<table>
+				<tr>
+					<td>A</td>
+				</tr>
+				<tr>
+					<td>B</td>
+				</tr>
+				<tr>
+					<td>C</td>
+				</tr>
+				<tr>
+					<td>D</td>
+				</tr>
+				<tr>
+					<td>E</td>
+				</tr>
+			</table>
+			</div>
+
+			
+			<p>Reading taken from point <span id="point">A</span>:</p> 
+			<input class="num" type="text" id="_off_reading"><br /> 
+			
+			<p class="but" id="off_center"> Record Data </p>
+			<p class="sbut" id="off_s" style="
+									display: none;"> Submit Data </p>
+		</div>
+		<hr />
+
+		<p> Comments</p>
+		<input type="textarea" name="_comments">
+	</fieldset>
+
+	<button> Submit </button>
+
+</form>
+<div id="standards_" style="float: left;">
+    <p>Standard Name: <span id="standard_name"></span></p>
+    <div id="standards_table" >
+        <table>
+            <tr>
+                <td>Nominal</td>
+                <td>Actual</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+
+    function nominalCheck(id, std){
+        alert(std);
+        $.post("check_nominal", {"value": $(id).val(), 
+                                   "standard": std}, 
+                                   function(data, status){
+                                   if(data == "false"){
+                                            alert("Warning! The value entered is not registered with the selected standard. Certificate generation will fail");
+                                            }
+                                      }
+                                     )
+                                }
+    
+    
+	$(document).ready(function(){
+					
+                    
+                    //$("#standard_name").text($("#mass_pieces").val())
+
+                    
+					var warm_count= 0;
+					
+					/* warm up values */
+					
+					$("#warm_up").click(function(){
+                    
+                        nominalCheck("#__warm_up", $("#mass_pieces").val())
+                        if($("#__warm_up").val() == ""){
+                                alert("you cannot enter empty data")
+                            }
+                        else{
+						warm_count += 1;
+						if(warm_count < 11){
+						$("#warm_up_table").load("/tabulate_balance_warm",{"value": $("#__warm_up").val()});
+						}
+						else{
+							$("#warm_up").hide();
+							$("#warm_up_s").show();
+						}
+                        }
+					})
+					
+					// submit values for the warm up 
+					
+					$("#warm_up_s").click(function(){
+						$.post("clear_table");
+						$("#first").hide();
+						$("#third").show();
+						
+					})
+					
+					
+					var settling_count = 0;
+					/* setting values */
+					$("#settling").click(function(){
+						settling_count += 1;
+						if($("#__settling").val() == ""){
+                            alert("you canoot enter empty data");
+                        }
+                        else{
+                            if(settling_count < 6){
+                            $("#settling_table").load("/tabulate_balance_settling",{"value": $("#__settling").val()});
+                            }
+                            else{
+                                $("#settling").hide();
+                                $("#settling_s").show();
+                            }
+                        }
+					})
+					
+					$("#settling_s").click(function(){
+						$.post("clear_table");
+                        alert("called");
+                        // an important feature!!!!
+                        $("#standards_table").load("/standards_table", {"standard": $("#mass_pieces").val()});
+						$("#third").css("display", "none");
+						$("#fourth").css("display", "block");
+				
+					})
+					
+					
+					var lin_count_one = 0;
+					
+					/*linearity up*/
+					$("#linearity").click(function(){
+						nominalCheck("#__lin_nominal", $("#mass_pieces option:selected").val())
+                        lin_count_one += 1;
+						if( $("#__lin_nominal").val() == "" || $("#__lin_up").val() == "" ){
+                            alert("you canoot enter empty data");                            
+                        }
+                        else{
+                                if(lin_count_one < 6){
+                                $("#linearity_table").load("/tabulate_balance_linearity",{"nominal": $("#__lin_nominal").val(), "up": $("#__lin_up").val()});
+                                                }
+                                else{
+                                        $("#linearity").hide();
+                                        $("#linearity_s").show();
+                                }
+                        }
+					
+					})
+					
+					$("#linearity_s").click(function(){
+						$.post("clear_table");
+						$("#fourth").css("display", "none");
+						$("#fifth").css("display", "block");
+					})
+					
+					//linearity 2 variables
+					var lin_row = 0;
+					var lin_count = 0;
+					
+					/* linearity 2*/
+					
+					$("#linearity2").click(function(){
+						lin_count += 1;
+						if(lin_row == 0){
+                            nominalCheck("#_linearity2_reading", $("#mass_pieces option:selected").val())
+                        }
+                        else if(lin_row == 1 || lin_row == 3){
+							$("#which").text("Linearity Up");
+						}
+						else if(lin_row == 2){
+							$("#which").text("Linearity Down")
+						}
+						
+						if(lin_count < 6){
+							$("#linearity_table_2").load("/tabulate_balance_linearity_two", {"reading": $("#_linearity2_reading").val(),
+																						"row": lin_row});
+											}
+						else{
+							lin_count = 1 // resets the reading count
+							lin_row += 1; // keeps track of the rows of readings
+							$("#linearity_table_2").load("/tabulate_balance_linearity_two", {"reading": $("#_linearity2_reading").val(),
+																						"row": lin_row});
+									if(lin_row > 3){
+										$("#linearity2").hide();
+										$("#linearity2_s").show();
+								}
+							}
+							
+						$("#linearity_reading").text(lin_count + 1);
+						
+						
+					})
+					
+					$("#linearity2_s").click(function(){
+						$.post("clear_table");
+						$("#fifth").css("display", "none");
+						$("#sixth").css("display", "block");
+					})
+					
+					var tare_count = 0;
+					
+					/* taring linearity*/
+					
+					$("#taring").click(function(){
+						tare_count += 1;
+						
+						if (tare_count < 6){
+						$("#taring_table").load("/tabulate_balance_tare",{"tare": $("#actual_tare").val(),
+																			"indicated": $("#indicated_tare").val()});
+											}
+						else{
+							$("#taring").hide();
+							$("#taring_s").show();
+						}	
+					})
+					
+					$("#taring_s").click(function(){
+						$.post("clear_table");
+						$("#sixth").css("display", "none");
+						$("#seventh").css("display", "block");
+				
+					})
+					
+					
+					
+					var repeat_count = 0;
+					var repeat_row = 0;
+					
+					/* Repeatability */
+					
+					$("#repeatability").click(function(){
+						repeat_count += 1;
+						
+						if(repeat_count > 5){
+							repeat_count = 1;
+							repeat_row += 1;
+						}
+						
+						if(repeat_row == 1){
+							$("#repeat_mode").text(" Full Load");
+						}
+						
+						if(repeat_row < 2){
+							
+							$("#repeatability_table").load("/tabulate_balance_repeatability",{"reading": $("#_repeat_reading").val(),
+																						"row": repeat_row});
+									}
+						else{
+							$("#repeatability").hide();
+							$("#repeatability_s").show();
+						}
+					})
+					
+					
+					$("#repeatability_s").click(function(){
+						$.post("clear_table");
+						$("#seventh").css("display", "none");
+						$("#eigth").css("display", "block");
+					})
+					
+					
+				off_count = 0;
+				letters = ["A", "B", "C", "D", "E"]
+					/* Off center */
+				
+				$("#off_center").click(function(){
+					off_count += 1;
+                    nominalCheck("input[name=off_center_mass]", $("#mass_pieces option:selected").val())
+                    nominalCheck("#_off_reading", $("#mass_pieces option:selected").val());
+						if(off_count > 5){
+							$("#off_center").hide();
+							$("#off_s").show();
+						}
+						else{
+						$("#point").text(letters[off_count]);
+						$("#off_table").load("/tabulate_balance_off_center_error",{"reading": $("#_off_reading").val(),
+																						"row": off_count - 1});
+									}
+					})
+					
+					
+					$("#off_s").click(function(){
+						$.post("clear_table");
+						$("#eigth").hide()
+					})
+						
+				})
+</script>
+{% endblock %}

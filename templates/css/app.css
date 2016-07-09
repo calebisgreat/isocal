@@ -1,0 +1,89 @@
+
+
+//login stuff
+
+#container{
+	margin-top: 200px;
+}
+
+#image {
+	float: left;
+}
+
+#login{
+	float:  left;
+	width : 250px;
+	height: 300px;
+	
+}
+
+//signup
+
+#signup{
+	margin: auto;
+	width: 300px;
+	heigth: 900px;
+}
+
+// main application stuff
+
+.summary_table{
+	min-width: 3cm;
+}
+
+
+
+ul{
+	list-style-type: None;
+	margin: 0px;
+    
+}
+
+li {
+    min-height: 30px;
+    font-size: 16px;
+    padding-top: 7px;
+    background-color: blue;
+    color: white;
+    text-align: center;
+    border-bottom: 1px solid white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
+// summary
+
+.summary{
+	display: block;
+	background-color: blue;
+	color: white;
+	margin: 5px;
+	border: 1px solid white;
+	padding: 2px;
+	width: 400px;
+	height: 100px;
+}
+
+.hidden {
+    display: none;
+    position: relative;
+	top: 2px;
+    left: -2px;
+}
+
+.hidden > li {
+    background-color: #aaaaaa;
+    left: -2px;
+}
+
+#sub {
+    display: none;
+}
+
+#sub > li {
+    background-color: #0088ff;
+}

@@ -1,0 +1,134 @@
+<!Doctype html>
+<html>
+	<head>
+
+		<style>
+			table, tr, td{
+				border: 1px solid black;
+				border-collapse: collapse;
+				padding: 2px;
+				min-width: 5cm;
+				min-height: 0.5cm;
+				}
+			.no_b{
+				border: none;
+				font-style: italic;
+				padding: 3px;
+			}
+			pre, p{
+				font-size: 12pt;
+			}
+		</style>
+	</head>
+	<body>
+		<center><p>{{certificate_number}}</p></center>
+    <div>
+        <div style="float: left;">
+            <img width="187" height="100" src="sad.jpg">
+        </div>
+		<div style="float: left;">
+            <center><img  width="295" height="125" src="iso.png">
+            <p>E-mail: Consolte@mweb.co.zw, 17038 Boshoff Road, Graniteside, Harare, Zimbabwe</p>
+            <p><b>A SADCAS Accredited Calibration Laboratory</b></p></center>
+        </div>
+	</div>
+    <div style="float: left;
+                clear: both;">
+    
+        <h2 style="color: red;
+					text-align: center;"> CALIBRATION CERTIFICATE</h2>
+
+<pre><b>Date of Calibration:  {{date}}
+
+Date of Next Calibration: {{due}}
+		
+Calibrated for     :  {{customer}}
+		
+Calibration of     :  {{type}}
+
+Manufacturer       :  {{manufacturer}}
+
+Serial Number      :  {{serial}}
+
+Range              :  {{range}}
+			
+Resolution         :  {{resolution}}
+			
+Calibrated at      :  {{location}}
+
+
+
+</b></pre>
+		
+		
+		<br />
+		<center><table>
+			<tr><td>Calibrated by</td>
+				<td>{{by}}</td>
+				<td>Sign</td>
+			</tr>
+			<tr><td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr><td>Approved by</td>
+				<td>Lab Manager</td>
+				<td>Sign</td>
+			</tr>
+			<tr><td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table></center>
+		<pre>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		</pre>
+	<h3><b>1    Standards used:</b></h3>
+		{% block standards %}
+		{% endblock %}
+	<h3>2	Procedure used: {{procedure}} </h3>
+		
+	<h3>3	Calibration Conditions:</h3>
+	
+	<p>Temperature: {{temperature}} ± 1ºC</p>
+	<p>Humidity   :  {{humidity}} ± 10% RH</p>
+	
+	
+	<h3>4	Units used : {{units}}</h3>
+	
+	<h3>5	Results:</h3>
+	{% block results %}
+	{% endblock %}
+	
+	<h3>6	Traceability:</h3>
+	{% block traceability %}
+	{% endblock %}
+	
+	<h3>7	Remarks:</h3>
+	
+	<p>The reported uncertainties of measurement were calculated and expressed 
+	in accordance with the BIPM, ISO, IEC, IUPAP, OIML document entitled: "A guide
+	to the expression of Uncertainty in Measurement"(International Organization for
+	Standardization, Geneva Switzerland, 1993)</p>
+	
+	<p>The reported uncertainties of measurement are based on standard uncertainty 
+	multiplied by a coverage factor of k=2, which unless specifically stated otherwise
+	provides a level of confidence of approximately 95%</p>
+    
+    <p>{{comments}}</p>
+    </div>
+	</body>
+</html>

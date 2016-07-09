@@ -1,0 +1,162 @@
+{% extends "home.html" %}
+{% block content %}
+		<form method="POST" action ="captured?type=balance">
+			<fieldset>
+				<legend>Customer</legend>
+				
+				<select name="customer">
+					<option value="delta">Delta</option>
+					<option value="kwekwemaltings">Kwekwe Maltings</option>
+					<option value="softex">Softex</option>
+				</select>
+				<a href="newcustomer">New Customer</a>
+				
+			</fieldset>
+			<fieldset>
+				<legend>Instrument Identification</legend>
+				<p>Name of Instrument</p>
+				<input type="text" name="_instrument">
+				<p>Serial Number</p>
+				<input type="text" name="_sn">
+				<p>Manufacturer</p>
+				<input type="text" name="_man">
+				<p>Model</p>
+				<input type="text" name="_model">			
+			</fieldset>
+			<fieldset>
+				<legend>Instrument Specifications</legend>
+				<p>Range</p>
+				<input type="text" name="_range">
+				<p>Resolution</p>
+				<input type="text" name="_resolution">
+				<p>Units</p>
+				<input type="text" name="_units">
+				<p>Calibrated at</p>
+				<input type="text" name="_location">
+				</fieldset>
+			<fieldset>
+				<legend>Calibration</legend>
+				<p> Procedure </p>
+				<select name="procedure">
+					<option value="procedure">Procedure</option>
+					<option value="procedure">Procedure 2</option>
+				</select>
+				
+				<p> Cold start Measurement</p>
+				<table>
+				<tr>
+					<th>Reading #</th>
+					<th>Nominal mass</th>
+				</tr>
+				</table>
+				<hr />
+				Nominal Mass: <input type="text" name="actual" id ="actual">
+				<button> + </button>
+				
+				<p> Settling Time</p>
+
+				<table>
+				<tr>
+					<th>Reading #</th>
+					<th>Settling time</th>
+				</tr>
+				</table>
+				
+				Settling time: <input type="text" name="actual" id ="actual">
+				<button> + </button>
+				<hr />
+				
+				<p> Linearity (before adjustments)</p>
+				
+				<table>
+				<tr>
+					<th>Nominal Mass</th>
+					<th>Actual Mass</th>
+					<th>Linearity Up</th>
+				</tr>
+				</table>
+				
+				Nominal Mass: <input type="text" name="actual" id ="actual"><br />
+				Actual Mass: <input type="text" name="indicated" id ="indicated"> <br />
+				Linearity Up: <input type="text" name="actual" id ="actual"><br />
+				<button> + </button>				
+				<hr />
+
+				<p> Calibration adjustments effected Linearity (from the center of the pan)</p>
+				
+				<table>
+				<tr>
+					<th>Linearity Up</th>
+					<th>Linearity Down</th>
+					<th>Linearity Up</th>
+				</tr>
+				</table>
+				
+				Linearity Up: <input type="text" name="actual" id ="actual"><br />
+				Linearity Down: <input type="text" name="indicated" id ="indicated"> <br />
+				Linearity Up: <input type="text" name="actual" id ="actual"><br />
+				<button> + </button>				
+				<hr />
+				
+				<p>Taring Linearity </p>
+				
+				<table>
+				<tr>
+					<th>Tare Value</th>
+					<th>Indicated Reading</th>
+				</tr>
+				</table>
+				
+				Tare Value: <input type="text" name="actual" id ="actual"><br />
+				Indicated Reading: <input type="text" name="indicated" id ="indicated"> <br />
+				<button> + </button>				
+				
+				<hr />
+				<p>Repeatablity</p>
+				
+				<table>
+				<tr>
+					<th>Reading #1</th>
+					<th>Reading #2</th>
+					<th>Reading #3</th>
+					<th>Reading #4</th>
+					<th>Reading #5</th>
+				</tr>
+				</table>
+				
+				Reading #1 <input type="text" id ="one"><br />
+				Reading #2 <input type="text" id ="two"> <br />
+				Reading #3 <input type="text" id ="three"><br />
+				Reading #4 <input type="text" id ="four"><br />
+				Reading #5 <input type="text" id ="five"><br />
+
+				<button> + </button>				
+				<hr />
+				
+				<p>Off Center Test</p>
+				
+				<table>
+				<tr>
+					<th>A</th>
+					<th>B</th>
+					<th>C</th>
+					<th>D</th>
+					<th>E</th>
+				</tr>
+				</table>
+				
+				A <input type="text" id ="one"><br />
+				B <input type="text" id ="two"> <br />
+				C <input type="text" id ="three"><br />
+				D <input type="text" id ="four"><br />
+				E <input type="text" id ="five"><br />
+
+				<button> + </button>				
+				<hr />
+				
+				<p> Comments</p>
+				<input type="textarea" name="comments">
+				</fieldset>
+				<button> Submit </button>
+			</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset = "UTF-8" >
+		<link rel="stylesheet" href="css/app_mobile.css" >
+		<link rel="stylesheet" href="css/forms_mobile.css" >
+		<script  src="scripts/jquery-2.2.2.js"></script>
+	</head>
+	<body>
+		<div id="head">
+		<div id="menu_button">Menu</div><div id="heading">ConsolTech Calibration </div>
+		</div>
+		<div id="aside">
+			<ul>
+				<li><a href="calibrate">New Certificate</a></li>
+				<li><a href="summary">Certificate Summary</a></li>
+			</ul>
+		</div>
+	<div id="content">
+		{% block content %} {% endblock %}
+        {% block right %} {% endblock %}
+    </div>
+    <script>
+    $(document).ready(function(){
+    
+        $("#menu_button").click(function(){
+            $("#aside").toggle();
+        })
+        
+        })
+    </script>
+	</body>
+</html>

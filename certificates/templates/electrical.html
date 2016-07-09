@@ -1,0 +1,318 @@
+{% extends "base_template.html" %}
+{% block standards %}
+<table>
+	<tr>
+		<td>Laboratory Standards and Equipment Used</td>
+		<td>Serial Number</td>
+		<td>Certificate Number</td>
+	</tr>
+	<tr>
+		<td>Fluke 5100B</td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+{% endblock %}
+
+{% block results %}
+<p>DC Voltage Ranges</p>
+<table>
+	<tr>
+		<td>Range</td>
+		<td>Input</td>
+		<td>Indicated Reading</td>
+		<td>Correction</td>
+		<td>Uncertainty</td>
+		<td>Remarks</td>
+	</tr>
+	<tr>
+		<td>5V</td>
+		<td><table>{{input_5}}</table></td>
+		<td><table>{{indicated_5}}</table></td>
+		<td><table>{{correction_5}}</table></td>
+		<td><table>{{uncertainty_5}}</table></td>
+		<td><table>{{remarks_5}}</table></td>
+	</tr>
+	<tr>
+		<td>50V</td>
+		<td><table>{{input_50}}</table></td>
+		<td><table>{{indicated_50}}</table></td>
+		<td><table>{{correction_50}}</table></td>
+		<td><table>{{uncertainty_50}}</table></td>
+		<td><table>{{remarks_50}}</table></td>
+	</tr>
+	<tr>
+		<td>500V</td>
+		<td><table>{{input_500}}</table></td>
+		<td><table>{{indicated_500}}</table></td>
+		<td><table>{{correction_500}}</table></td>
+		<td><table>{{uncertainty_500}}</table></td>
+		<td><table>{{remarks_500}}</table></td>
+	</tr>
+	<tr>
+		<td>1000V</td>
+		<td><table>{{input_1000}}</table></td>
+		<td><table>{{indicated_1000}}</table></td>
+		<td><table>{{correction_1000}}</table></td>
+		<td><table>{{uncertainty_1000}}</table></td>
+		<td><table>{{remarks_1000}}</table></td>
+	</tr>
+	
+</table>
+
+<p>AC Voltage Ranges(50Hz)</p>
+<table>
+	<tr>
+		<td>Range</td>
+		<td>Input</td>
+		<td>Indicated Reading</td>
+		<td>Correction</td>
+		<td>Uncertainty</td>
+		<td>Remarks</td>
+	</tr>
+	<tr>
+		<td>5V</td>
+		<td><table>{{ac_input_5}}</table></td>
+		<td><table>{{ac_indicated_5}}</table></td>
+		<td><table>{{ac_correction_5}}</table></td>
+		<td><table>{{ac_uncertainty_5}}</table></td>
+		<td><table>{{ac_remarks_5}}</table></td>
+	</tr>
+	<tr>
+		<td>50V</td>
+		<td><table>{{ac_input_50}}</table></td>
+		<td><table>{{ac_indicated_50}}</table></td>
+		<td><table>{{ac_correction_50}}</table></td>
+		<td><table>{{ac_uncertainty_50}}</table></td>
+		<td><table>{{ac_remarks_50}}</table></td>
+	</tr>
+	<tr>
+		<td>500V</td>
+		<td><table>{{ac_input_500}}</table></td>
+		<td><table>{{ac_indicated_500}}</table></td>
+		<td><table>{{ac_correction_500}}</table></td>
+		<td><table>{{ac_uncertainty_500}}</table></td>
+		<td><table>{{ac_remarks_500}}</table></td>
+	</tr>
+	<tr>
+		<td>1000V</td>
+		<td><table>{{ac_input_1000}}</table></td>
+		<td><table>{{ac_indicated_1000}}</table></td>
+		<td><table>{{ac_correction_1000}}</table></td>
+		<td><table>{{ac_uncertainty_1000}}</table></td>
+		<td><table>{{ac_remarks_1000}}</table></td>
+	</tr>
+	
+</table>
+
+<p>DC Current Ranges(</p>
+<table>
+	<tr>
+		<td>Range</td>
+		<td>Input</td>
+		<td>Indicated Reading</td>
+		<td>Correction</td>
+		<td>Uncertainty</td>
+		<td>Remarks</td>
+	</tr>
+	<tr>
+		<td>0.5mA</td>
+		<td><table>{{dc_input_0.5}}</table></td>
+		<td><table>{{dc_indicated_0.5}}</table></td>
+		<td><table>{{dc_correction_0.5}}</table></td>
+		<td><table>{{dc_uncertainty_0.5}}</table></td>
+		<td><table>{{dc_remarks_0.5}}</table></td>
+	</tr>
+	<tr>
+		<td>50mA</td>
+		<td><table>{{dc_input_50}}</table></td>
+		<td><table>{{dc_indicated_50}}</table></td>
+		<td><table>{{dc_correction_50}}</table></td>
+		<td><table>{{dc_uncertainty_50}}</table></td>
+		<td><table>{{dc_remarks_50}}</table></td>
+	</tr>
+	<tr>
+		<td>500mA</td>
+		<td><table>{{dc_input_500}}</table></td>
+		<td><table>{{dc_indicated_500}}</table></td>
+		<td><table>{{dc_correction_500}}</table></td>
+		<td><table>{{dc_uncertainty_500}}</table></td>
+		<td><table>{{dc_remarks_500}}</table></td>
+	</tr>
+	<tr>
+		<td>10A</td>
+		<td><table>{{dc_input_10}}</table></td>
+		<td><table>{{dc_indicated_10}}</table></td>
+		<td><table>{{dc_correction_10}}</table></td>
+		<td><table>{{dc_uncertainty_10}}</table></td>
+		<td><table>{{dc_remarks_10}}</table></td>
+	</tr>
+	
+</table>
+
+<p>AC Current Ranges(50Hz)</p>
+<table>
+	<tr>
+		<td>Range</td>
+		<td>Input</td>
+		<td>Indicated Reading</td>
+		<td>Correction</td>
+		<td>Uncertainty</td>
+		<td>Remarks</td>
+	</tr>
+	<tr>
+		<td>0.5mA</td>
+		<td><table>{{ac_c_input_0.5}}</table></td>
+		<td><table>{{ac_c_indicated_0.5}}</table></td>
+		<td><table>{{ac_c_correction_0.5}}</table></td>
+		<td><table>{{ac_c_uncertainty_0.5}}</table></td>
+		<td><table>{{ac_c_remarks_0.5}}</table></td>
+	</tr>
+	<tr>
+		<td>50mA</td>
+		<td><table>{{ac_c_input_50}}</table></td>
+		<td><table>{{ac_c_indicated_50}}</table></td>
+		<td><table>{{ac_c_correction_50}}</table></td>
+		<td><table>{{ac_c_uncertainty_50}}</table></td>
+		<td><table>{{ac_c_remarks_50}}</table></td>
+	</tr>
+	<tr>
+		<td>500mA</td>
+		<td><table>{{ac_c_input_500}}</table></td>
+		<td><table>{{ac_c_indicated_500}}</table></td>
+		<td><table>{{ac_c_correction_500}}</table></td>
+		<td><table>{{ac_c_uncertainty_500}}</table></td>
+		<td><table>{{ac_c_remarks_500}}</table></td>
+	</tr>
+	<tr>
+		<td>10A</td>
+		<td><table>{{ac_c_input_10}}</table></td>
+		<td><table>{{ac_c_indicated_10}}</table></td>
+		<td><table>{{ac_c_correction_10}}</table></td>
+		<td><table>{{ac_c_uncertainty_10}}</table></td>
+		<td><table>{{ac_c_remarks_10}}</table></td>
+	</tr>
+	
+</table>
+
+<p>Resistance Ranges</p>
+<table>
+	<tr>
+		<td>Range</td>
+		<td>Input</td>
+		<td>Indicated Reading</td>
+		<td>Correction</td>
+		<td>Uncertainty</td>
+		<td>Remarks</td>
+	</tr>
+	<tr>
+		<td>Ohms</td>
+		<td><table>{{r_input_0.5}}</table></td>
+		<td><table>{{r_indicated_0.5}}</table></td>
+		<td><table>{{r_correction_0.5}}</table></td>
+		<td><table>{{r_uncertainty_0.5}}</table></td>
+		<td><table>{{r_remarks_0.5}}</table></td>
+	</tr>
+	<tr>
+		<td>Kilo Ohms</td>
+		<td><table>{{r_input_50}}</table></td>
+		<td><table>{{r_indicated_50}}</table></td>
+		<td><table>{{r_correction_50}}</table></td>
+		<td><table>{{r_uncertainty_50}}</table></td>
+		<td><table>{{r_remarks_50}}</table></td>
+	</tr>
+	<tr>
+		<td>Mega Ohms</td>
+		<td><table>{{r_input_500}}</table></td>
+		<td><table>{{r_indicated_500}}</table></td>
+		<td><table>{{r_correction_500}}</table></td>
+		<td><table>{{r_uncertainty_500}}</table></td>
+		<td><table>{{r_remarks_500}}</table></td>
+	</tr>
+</table>
+
+<p>Diode Test Ranges</p>
+<table>
+	<tr>
+		<td>Range</td>
+		<td>Input</td>
+		<td>Indicated Reading</td>
+		<td>Correction</td>
+		<td>Uncertainty</td>
+		<td>Remarks</td>
+	</tr>
+	<tr>
+		<td>2 Volt</td>
+		<td><table>{{dt_input_0.5}}</table></td>
+		<td><table>{{dt_indicated_0.5}}</table></td>
+		<td><table>{{dt_correction_0.5}}</table></td>
+		<td><table>{{dt_uncertainty_0.5}}</table></td>
+		<td><table>{{dt_remarks_0.5}}</table></td>
+	</tr>
+</table>
+
+<p>Continuity Test Range</p>
+<table>
+	{{continuity}}
+</table>
+
+<p>Frequency Range</p>
+<table>
+	<tr>
+		<td>Range</td>
+		<td>Input</td>
+		<td>Indicated Reading</td>
+		<td>Correction</td>
+		<td>Uncertainty</td>
+		<td>Remarks</td>
+	</tr>
+	<tr>
+		<td>KHz</td>
+		<td><table>{{f_input_0.5}}</table></td>
+		<td><table>{{f_indicated_0.5}}</table></td>
+		<td><table>{{f_correction_0.5}}</table></td>
+		<td><table>{{f_uncertainty_0.5}}</table></td>
+		<td><table>{{f_remarks_0.5}}</table></td>
+	</tr>
+</table>
+
+<p>Temperature Ranges</p>
+<table>
+	<tr>
+		<td>Range</td>
+		<td>Input</td>
+		<td>Indicated Reading</td>
+		<td>Correction</td>
+		<td>Uncertainty</td>
+		<td>Remarks</td>
+	</tr>
+	<tr>
+		<td>C</td>
+		<td><table>{{t_input_0.5}}</table></td>
+		<td><table>{{t_indicated_0.5}}</table></td>
+		<td><table>{{t_correction_0.5}}</table></td>
+		<td><table>{{t_uncertainty_0.5}}</table></td>
+		<td><table>{{t_remarks_0.5}}</table></td>
+	</tr>
+</table>
+
+<p>Insulation Measuring Voltages:(with a load of 20Mega Omhs)</p>
+<table>
+	<tr>
+		<td>Range</td>
+		<td>Input</td>
+		<td>Indicated Reading</td>
+		<td>Correction</td>
+		<td>Uncertainty</td>
+		<td>Remarks</td>
+	</tr>
+	<tr>
+		<td>Volt</td>
+		<td><table>{{i_input_0.5}}</table></td>
+		<td><table>{{i_indicated_0.5}}</table></td>
+		<td><table>{{i_correction_0.5}}</table></td>
+		<td><table>{{i_uncertainty_0.5}}</table></td>
+		<td><table>{{i_remarks_0.5}}</table></td>
+	</tr>
+</table>
+{% endblock %}
