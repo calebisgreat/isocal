@@ -250,7 +250,6 @@ if __name__ == "__main__":
                "_type": "ph"}
     
     tds={"name_of_instrument": "TDS Meter",
-                
                "readings": "205:200;800:807",
                "corrections": "205:200;800:807",
                "units": "ppt",
@@ -258,14 +257,12 @@ if __name__ == "__main__":
     
     length={"name_of_instrument": "Micrometer",
                "readings": "205:200;800:807",
-               
                "corrections": "205:200;800:807",
                "units": "m",
                "_type": "length"}
     
     conductivity={"name_of_instrument": "conductivity meter",
                "readings": "0:0;23:25",
-               
                "corrections": "0:0;23:25",
                "units": "siemens",
                "_type": "conductivity"}
@@ -294,27 +291,11 @@ if __name__ == "__main__":
 
     gen = [mass, pressure, voltage, current, ph, tds, length, volume, conductivity, flow, temperature]
 
-    for i in gen:
+    """for i in gen:
         base.update(i)
         base["_id"] = str(random.randint(0, 100000))
         session.add(general(**base))
         session.commit()
-        print("created")
+        print("created")"""
         
-    """
-        
-    base.update(mass)
-    base["_id"] = "test_mass"
-    session.add(general(**base))
-    session.commit()
-    
-    g = general_standards(name= "standard", _type= "standard",
-                          certificate ="123",
-                          serial="123",
-                          traceability="this standard is traceable",
-                          nominal_values = "100",
-                          actual_values = "100.0001",
-                          uncertainty= "0.000015")
-    session.add(g)
-    session.commit()"""
     

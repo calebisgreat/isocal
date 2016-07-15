@@ -654,37 +654,9 @@ class CertificateServer():
         finally:
             return self.summary()
     
-    def preview(self, number):
-        '''previews the recently created certificate'''
-        preview = self.templates.get_template("certificate_preview.html")
-        return preview.render(certificate= "{}\certificates\completed\{}.html".format( \
-                                                        root_dir,number))
-            
-        
-        #
-        #these keys are removed from the session once the table is created 
-        #and added to the page 
-        #
-
-        
-    
-    
             
     
     
-    
-conf = {"global": {
-					"server.socket_port": 8080,
-                    "server.socket_host": "127.0.0.1"
-				},
-        "/": {
-              "tools.sessions.on" : True,
-              "tools.staticdir.root": os.path.abspath(os.getcwd()),
-              "tools.staticdir.on": True,
-              "tools.staticdir.dir": "./Templates",
-              "server.thread_pool": 10# will change one sqlalchemy is implemented
-              }
-        }
 
 #
 # this function makes sure only logged in users can access certain pages
@@ -704,6 +676,7 @@ class Mobile():
         self.status = "pending"
         self.balance = {}
         self.autoclave={}
+        
     @cherrypy.expose
     def index(self):
         return "success"
@@ -761,14 +734,21 @@ class Mobile():
                                                half_reading=self.balance["repeat_half"],
                                                full_reading=self.balance["repeat_full"])
                     
-            off = self.balance["off_center"].split(":")
-            oc= data.balance_off_center(_id=self.balance["id"],
+            try:
+                off = self.balance["off_center"].split(":")
+                oc= data.balance_off_center(_id=self.balance["id"],
                                             a=off[0],
                                             b=off[1],
                                             c=off[2],
                                             d=off[3],
                                             e=off[4])
-                    
+            except:
+                oc= data.balance_off_center(_id = self.balance["id"],
+                                            a="10",
+                                            b="10",
+                                            c="10",
+                                            d="10",
+                                            e="10")    
                     
             out = data.outstanding(_id = self.balance["id"],
                                    _type= "Balance",
@@ -807,6 +787,7 @@ class Mobile():
         if self.autoclave_count == 21:
             self.status = self.add_autoclave()
         return self.status
+    
     def add_autoclave(self):
         try:
             auto = data.autoclave(_id=self.autoclave["id"],
@@ -846,7 +827,6 @@ class Mobile():
     def upload_general(self, user, customer, _type, id, date, due,instrument, sn, man, model,
                  _range, resolution, units, standard, location, start_time, end_time,
                  readings, corrections, immersion, comments):
-        print(readings)
         try:
             record = data.general(
                                 _id = id,
@@ -880,10 +860,10 @@ class Mobile():
             data.session.commit()
         except Exception as e:
             data.session.rollback()
-            print("a bigger error occured", e)
             return "failure"
         else:
             return "success"
+    
     @cherrypy.expose  
     def upload_standard(self, name, number, nominal, traceability,
                         actual, uncertainty, serial):
@@ -900,7 +880,6 @@ class Mobile():
             data.session.commit()
         except Exception as e:
             data.session.rollback()
-            print("standard, ", e)
             return "failure"
         else:
             return "success"
@@ -909,21 +888,7 @@ s = CertificateServer()
 s.mobile = Mobile()
 
 if __name__ == "__main__":
-    """import tkinter as tk
     
-    class intro(tk.Frame):
-        def __init__(self, parent):
-            super().__init__(parent, background="white")
-            self.parent = parent
-            self.initUi()
-            
-        def initUi(self):
-            self.parent.title = "Start"
-            ip = tk.Label(self, text="Network ip:")
-            data= tk.Label(self, text="Database address and password")
-            sub= tk.Button(self, text="Start!", command= self.start_server)
-            
-        def start_server(self):"""
     conf = {"global": {
                     "server.socket_port": 8080,
                     "server.socket_host": "0.0.0.0"
