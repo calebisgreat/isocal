@@ -128,55 +128,23 @@ class balance_certificate():
 			
     def cold_start_table(self):
         
-        table = """<table>
-					<tr>
-						<td>Test weight</td>
-						<td>{}</td>
-					</tr>
-					<tr>
-						<td>Test #</td>
-						<td>Result</td>
-					</tr>
-					{}
-					<tr>
-						<td>Drift</td>
-						<td>{}</td>
-					</tr>
-		</table>"""
-
-        test_weight = self.data.warm_up_nominal
+        table = "<table>{}<table>"
+        table_content = []
+        table_content.append(create_row(["Test Weight(g)",
+                                         self.data.warm_up_nominal]))
+	    table_content.append(create_row(["Test #", "Result"]))
         cold_values = self.data.nominal_mass.split(":")
-        i = 0
-        fields = []
-        while i < len(cold_values):
-            fields.append("<tr><td>{}</td><td>{}</td></tr>".format(i + 1, cold_values[i]))
-            i += 1
+        for i in range(len(cold_values)):
+            table_content.append(create_row([i+1, cold_values[i]]))
+        table_content.append(create_row(["Drift",
+                                         self.cold_drift()]))
 
-        return table.format(test_weight, "".join(fields), self.cold_drift())
+        return table.format("".join(table_content))
 			
     def settling_table(self):
-        
-        table = """<table>
-						<tr>
-							<td>Reading</td>
-							<td>1st</td>
-							<td>2nd</td>
-							<td>3rd</td>
-							<td>4th</td>
-							<td>5th</td>
-						</tr>
-						<tr>
-							<td>Settling Time</td>
-							<td>{}</td>
-						</tr>
-						<tr>
-							<td>Average Settling Time</td>
-							<td>{}</td>
-						</tr>
-					</table>"""
-					
-        readings = self.data.settling_time.split(":")
-        return table.format("</td><td>".join(readings), self.settling_average())
+        data= {"Reading": ["1st", "2nd", "3rd", "4th", "5th"],
+               "Settling Time": [self.data.settling_time.split(":")[:4]]}#take only first 5 values
+        return simple_table(data, ["Reading", "Settling Time"], True)
 		
     def linearity_table(self):
             
