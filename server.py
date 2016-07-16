@@ -28,11 +28,10 @@ import os
 import data
 import certificates
 import datasheets
-from tabulator import general_tabulation, readings_formatter, get_initials, horizontal_tabulation
+from tabulator import general_tabulation,  horizontal_tabulation
 import tabulator as t
+from utilities import readings_formatter, get_initials,
 from _datetime import date
-from docutils.nodes import serial_escape
-from pyexpat import model
 root_dir = os.path.abspath(os.getcwd())
 data_is_persistent = True
 

@@ -18,6 +18,10 @@ DIR = os.path.abspath(os.getcwd())
 
 templates = jinja2.Environment(loader= jinja2.FileSystemLoader \
                                (os.path.join(DIR, "certificates\\templates")))
+
+
+"""this module contains the base class for all certificates modelled around the template
+design pattern. It also includes the classes for the  """
     
 class certificate():
     
@@ -366,8 +370,6 @@ class length_certificate(certificate):
         super().__init__(*args)
         self.template = 'length.html'
         
-    
-
 class temperature_certificate(certificate):
     def __init__(self, *args):
         super().__init__(*args)
@@ -464,13 +466,6 @@ class mass_certificate(certificate):
                                   self.dev,
                                   self._uncertainty)
         self.corrections_table = ""
-         
-    
-        
-    
-
-
-
 
 if __name__=="__main__":
    pass

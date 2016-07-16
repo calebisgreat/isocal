@@ -4,6 +4,34 @@ Created on Apr 20, 2016
 @author: caleb kandoro
 '''
 import data
+
+def create_row(data):   
+    if len(data) == 1:
+        return "<tr><td>" + data + "</td></tr>\n"
+    else:
+        return "<tr><td>{}</td></tr>\n".format("</td>\n<td>".join(data))
+    
+def simple_table(data = {}, fields= [], horizontal=False):
+    table_string = "<table>{}\n</table>"
+    rows =[]
+    if horizontal:
+        for field in fields:
+            row = [field]
+            row += data[field]
+            rows.append(create_row(row))
+            
+    else:
+        rows.append(create_row(fields))
+        for i in range(len(data[fields[0]])):
+            #select the i element in each field
+            #add them to a list
+            row_data = [data[field][i] for field in fields] 
+            rows.append(create_row(row_data))
+            
+        
+            
+    return table_string.format("".join(rows))
+
 def horizontal_tabulation(reading, row,headings=[], session={}):
     '''takes one reading at a time and appends it to the end of the appropriate row'''
     row = int(row)
@@ -92,10 +120,6 @@ def general_tabulation( fields = [], session = {}, headings =[], numbered=False)
         rows.append("<tr>" + "".join(row) + "</tr>")
         
     return response.format("".join(th), "".join(rows))
-    
-    
-    
-general_tabulation(fields = [50, 100, 23], headings=["actual", "indicated", "missions"])
 
 
 def readings_formatter(args):
@@ -114,47 +138,12 @@ def readings_formatter(args):
         
     return ";".join(table)
 
-#readings_formatter(['1','2','3'], ['4','5','6'])
 
 table= {"tare": ['1','2','3'],
          "repeat": ['1','2','3']}
 
-_keys = table.keys()
-_args= []
-for key in _keys:
-    try:
-        _args.append(table[key])
-    except:
-        print("something went wrong")
-    
-#readings_formatter(_args)
-
-
-def get_initials(user):
-    name= data.session.query(data.users).get(user)
-    try:
-        _name= name.full_name.split(" ")
-        return "".join([_name[0][0], _name[1][0]]).upper()
-    except:
-        return name.full_name[0].upper()
-def calculate_pressure_psi(weight):
-    weight = float(weight)
-    return (weight/45.19)+5.0150254481
-
-
-def calculate_pressure_bar(weight):
-    weight = float(weight)
-    return calculate_pressure_psi(weight) / 14.5038
+print(simple_table(table, ["tare", "repeat"])) 
     
 
-        
-def calculate_pressure_kpa(weight):
-    weight = float(weight)
-    return calculate_pressure_bar(weight) * 100
-    
-def calculate_pressure_mpa(weight):
-    val = calculate_pressure_bar(weight) / 10
-    return val
-    
-def calculate_pressure_pa(weight):
-    return calculate_pressure_bar(weight) / 100000
+
+
