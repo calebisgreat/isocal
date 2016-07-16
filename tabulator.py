@@ -5,7 +5,8 @@ Created on Apr 20, 2016
 '''
 import data
 
-def create_row(data):   
+def create_row(data):
+    data = [str(i) for i in data]   
     if len(data) == 1:
         return "<tr><td>" + data + "</td></tr>\n"
     else:
@@ -139,7 +140,7 @@ def readings_formatter(args):
     return ";".join(table)
 
 
-table= {"tare": ['1','2','3'],
+table= {"tare": [1,'2','3'],
          "repeat": ['1','2','3']}
 
 print(simple_table(table, ["tare", "repeat"])) 

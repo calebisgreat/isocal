@@ -1,7 +1,7 @@
 from utilities import percent_difference
 import datetime
 import data
-from tabulator import general_tabulation, horizontal_tabulation
+from tabulator import general_tabulation, horizontal_tabulation, create_row, simple_table
 import time
 import jinja2
 import os
@@ -9,7 +9,20 @@ import math
 from statistics import stdev, mean
 from builtins import round
 """balance certificate structure:
-
+1. start with a results table that records the settling average,corner tests,
+2. cold drift  and repeatability.
+3. then comes the table for the first linearity measurements
+4. next the statement of uncertainty
+5. followed by general information about the instrument
+6. numbered tables:
+    a. standards table
+    b. cold start table
+    c. settling times table
+    d. linearity table
+    e. repeability table
+    f. off center table
+    
+7. repeat of the standard uncertainty
 """
 class balance_certificate():
     def __init__(self, _id, initials, by, temp, humidity):
@@ -61,6 +74,7 @@ class balance_certificate():
                                    drift_contrib,
                                    repeat_contrib]) * 2, 6)
     
+    #group of functions for the results table
     def settling_average(self):
         """used to fill the field of the settling table regarding average time"""
         settling = self.data.settling_time.split(":")
@@ -79,78 +93,38 @@ class balance_certificate():
         average_over_span = (min(cold_values) + max(cold_values)) / 2
         return round(float(self.data.warm_up_nominal) - average_over_span, 6)
         
+    #end group    
+    
     def nominal_table(self):
-        """due to adjustments in the recording from the app much of 
-        the extrapolation of nominal values may well be unneccessary""""
         nominal = self.linearity_before.nominal_value.split(":")
-        act = self.standard.actual_values.split("|")
-        stdnom = self.standard.nominal_values.split("|")
-        actual = []
-        for i in nominal:
-            indx = stdnom.index(i)
-            actual.append(float(act[indx]))
-            
+        actual =self.linearity_before.actual.split(":")
         lin_up = self.linearity_before.linearity_up.split(":")
-		
-        
         differences = []
-        l = 0
-        while l < len(actual):
-            differences.append(abs(actual[l]-float(lin_up[l])))
-            l += 1 
-		
-        table = """<table>
-					{}{}{}{}
-					<tr>
-						<td>Calibration Adjustment Effected</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Weights used for correction</td>
-						<td></td>
-					</tr>
-		</table>"""
-		
-        actual = [str(i) for i in actual]
-        nom_row = "<tr><td>Nominal Mass</td><td>{}</td></tr>".format("</td><td>".join(nominal))
-        act_row = "<tr><td>Actual Mass</td><td>{}</td></tr>".format("</td><td>".join(actual))
-        lin_row = "<tr><td>Linearity Up</td><td>{}</td></tr>".format("</td><td>".join(lin_up))
-        dlist = []
-        for i in differences:
-            dlist.append("<td>{0:0.6f}</td>".format(i))
-            
-        dlist = [str(i) for i in dlist] 
-        dif_row = "<tr><td>Difference</td>{}</tr>".format("".join(dlist))
-		
-        return table.format(nom_row, act_row, lin_row, dif_row)
-	
+        for i in range(len(nominal)):
+            differences.append(abs(actual[i]-float(lin_up[i])))
+	    data = {"Nominal Mass": nominal,
+                "Actual Mass": actual,
+                "Linearity Up": lin_up, 
+                "Difference": differences} 
+		return simple_table(data, 
+                            ["Nominal Mass", "Actual Mass", "Linearity Up", "Difference"],
+                            True)
+        
     def standards_table(self):
-        table = """<table>
-						<tr>
-							<td>Description</td>
-							<td>Certificate Number</td>
-							<td>Acutal Weight</td>
-							<td>Uncertainty</td>
-						</tr>
-						{}
-					</table>"""
-
+        table = "<table>{}</table>"
+        table_content = []
+        table_content.append(create_row(["Description", "Certificate Number",
+                                         "Actual Mass", "Uncertainty"]))
+         
         nom = self.standard.nominal_values.split("|")
         certificate = self.standard.certificate
         actual = self.standard.actual_values.split("|")
         uncertainty = self.standard.uncertainty.split("|")
-        i = 0
-        fields = []
-        while i < len(actual):
-            fields.append("""<tr>
-								<td>{}</td>
-								<td>{}</td>
-								<td>{}</td>
-								<td>{}</td>
-							</tr>""".format(nom[i], certificate, actual[i], uncertainty[i]))
-            i +=1 
-		
-        return table.format("".join(fields))
+        for i in range(len(nom)):
+            table_content.append(create_row([nom[i], certificate,
+                                            actual[i], uncertainty[i]))
+    	
+        return table.format("".join(table_content))
 			
     def cold_start_table(self):
         
