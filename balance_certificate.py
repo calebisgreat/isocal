@@ -147,38 +147,6 @@ class balance_certificate():
         return simple_table(data, ["Reading", "Settling Time"], True)
 		
     def linearity_table(self):
-            
-        table = """<table>
-					<tr>
-						<td>Nominal Value</td><td>{}</td>
-					</tr>
-					<tr>
-						<td>Actual Value</td><td>{}</td>
-					</tr>
-					<tr>
-						<td>Linearity Up</td><td>{}</td>
-					</tr>
-					<tr>
-						<td>Linearity Down</td><td>{}</td>
-					</tr>
-					<tr>
-						<td>Linearity Up</td><td>{}</td>
-					</tr>
-					<tr>
-						<td>Average Reading</td><td>{}</td>
-					</tr>
-					<tr>
-						<td>Difference</td><td>{}</td>
-					</tr>
-					<tr>
-						<td>Standard Deviation</td><td>{}</td>
-					</tr>
-					<tr>
-						<td>Maximum Difference</td><td>{:0.6f}</td>
-					</tr>
-						
-		</table>"""
-        
         def get_nominals(self):
             nom_list = []
             act_list = []
@@ -199,8 +167,7 @@ class balance_certificate():
         lin_up_list = [float(i) for i in self.linearity_after.linearity_up.split(":")]
         lin_uup_list = [float(i) for i in self.linearity_after.linearity_uup.split(":")]
         lin_down_list = [float(i) for i in self.linearity_after.linearity_Down.split(":")]
-        average_list = []
-        difference_list = []
+        
         # sort values
         nom_list.sort()
         act_list.sort()
@@ -208,33 +175,29 @@ class balance_certificate():
         lin_down_list.sort()
         lin_uup_list.sort()
         
-        
+        average_list = []
+        difference_list = []
         deviation_list = []
-        p= 0
-        while p < len(act_list):
+        
+        for  p in range(len(nom_list)):# may have to put act_list
             average_list.append((lin_down_list[p] + lin_up_list[p] + lin_uup_list[p]) / 3)
             difference_list.append(abs(act_list[p]- average_list[p]))
             deviation_list.append(stdev([lin_down_list[p], lin_up_list[p], lin_uup_list[p]]))
-            p += 1 
-            
-        nom_list = [str(i) for i in nom_list]
-        act_list = [str(i) for i in act_list]
-        lin_up_list = [str(i) for i in lin_up_list]
-        lin_uup_list = [str(i) for i in lin_uup_list]
-        lin_down_list = [str(i) for i in lin_down_list]
-        average_list = ["{0:0.6f}".format(i) for i in average_list]
-        difference_list = ["{0:0.6f}".format(i) for i in difference_list]
-        deviation_list = ["{0:0.6f}".format(i) for i in deviation_list]
-        return table.format("</td><td>".join(nom_list),
-                            "</td><td>".join(act_list),
-                            "</td><td>".join(lin_up_list),
-                            "</td><td>".join(lin_down_list),
-                            "</td><td>".join(lin_uup_list),
-                            "</td><td>".join(average_list),
-                            "</td><td>".join(difference_list),
-                            "</td><td>".join(deviation_list),
-                            max(difference_list))
-
+           
+        
+        data = {"Nominal Value": nom_list,
+                "Actual Value": act_list,
+                "Linearity Up": lin_up_list,
+                "Linearity Down": lin_down_list,
+                "Linearity  Up": lin_uup_list,
+                "Average Reading": average_list,
+                "Difference": difference_list,
+                "Standard Deviation": deviation_list
+                }
+        return simple_table(data, ["Nominal Value", "Actual Value", "Linearity Up"
+                                   "Linearity Down", "Linearity  Up", "Average Reading",
+                                   "Difference", "Standard Deviation"], True)
+        
     def repeatability_table(self):
         table = """<table>
                         <tr>
